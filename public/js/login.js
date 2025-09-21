@@ -16,14 +16,14 @@
     return;
   }
 
-  const response = await fetch('/api/users/login', {
+  const response = await fetch('/api/auth/login', {
     method: 'POST',
     body: JSON.stringify({ email, password }),
     headers: { 'Content-Type': 'application/json' },
   });
 
   if (response.ok) {
-    window.location.replace('/product');
+    window.location.replace('/products');
   } else {
     window.alert('Login failed. Please try again.');
   }
@@ -46,18 +46,18 @@ if (typeof document !== 'undefined') {
   }
 
   if (signupNav) {
-    signupNav.addEventListener('click', navigateTo('signUp'));
+    signupNav.addEventListener('click', navigateTo('/signup'));
   }
 
   if (registerLink) {
-    registerLink.addEventListener('click', navigateTo('signUp'));
+    registerLink.addEventListener('click', navigateTo('/signup'));
   }
 
   if (cartLink) {
-    cartLink.addEventListener('click', navigateTo('cart'));
+    cartLink.addEventListener('click', navigateTo('/cart'));
   }
 
   if (aboutUsLink) {
-    aboutUsLink.addEventListener('click', navigateTo('aboutUs'));
+    aboutUsLink.addEventListener('click', navigateTo('/about-us'));
   }
 }

@@ -17,6 +17,15 @@ are considering purchasing, simply click add to cart and continue browsing until
 - Run `npm run lint` and `npm run format` before pushing changes.
 - Seed sample data with `npm run seeds` when you need a fresh database.
 
+### Environment
+
+Set the following variables in a `.env` file as needed:
+
+- `DB_NAME`, `DB_USER`, `DB_PASS` for the MySQL connection.
+- `SESSION_SECRET` to sign session cookies (defaults to a dev-safe value).
+- `SESSION_MAX_AGE` in milliseconds to control session lifetime.
+- `CORS_ORIGIN` as a comma-separated list when exposing the API to other origins.
+
 ## At a Glance
 
 ![2023-03-30 (2)](https://user-images.githubusercontent.com/117941643/228959468-be5db626-5ad2-44c6-8966-f8d9a5915ad1.png)

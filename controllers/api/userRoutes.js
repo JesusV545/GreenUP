@@ -1,52 +1,64 @@
-const router = require('express').Router();
-const { User } = require('../../models'); //need to change names once the models are named later
+﻿const router = require('express').Router();
+const { User } = require('../../models');
 
-//copied some code from mini project that could be reused and changed
-router.post('/', async (req, res) => {
+const sanitizeUser = (user) => {
+  const plain = user.get({ plain: true });
+  delete plain.password;
+  return plain;
+};
+
+router.post('/', async (req, res, next) => {
   try {
-    // const userData = await User.create({req.body});
+    const { name, email, password } = req.body;
 
-    const newUser = await User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-    });
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: 'Name, email, and password are required.' });
+    }
+
+    const newUser = await User.create({ name, email, password });
+
     req.session.save(() => {
       req.session.user_id = newUser.id;
       req.session.logged_in = true;
 
-      res.status(200).json(newUser);
-      return;
+      return res.status(201).json({ user: sanitizeUser(newUser) });
     });
-  } catch (err) {
-    res.status(400).json(err);
+  } catch (error) {
+    if (error.name === 'SequelizeUniqueConstraintError') {
+      return res.status(409).json({ message: 'An account with that email already exists.' });
+    }
+    return next(error);
   }
 });
 
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res, next) => {
   try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const { email, password } = req.body;
 
-    if (!userData) {
-      res.status(400).json({ message: 'Incorrect email or password, please try again' });
-      return;
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required.' });
     }
 
-    const validPassword = await userData.checkPassword(req.body.password);
+    const userData = await User.findOne({ where: { email } });
+
+    if (!userData) {
+      return res.status(401).json({ message: 'Incorrect email or password.' });
+    }
+
+    const validPassword = await userData.checkPassword(password);
 
     if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect email or password, please try again' });
-      return;
+      return res.status(401).json({ message: 'Incorrect email or password.' });
     }
 
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.json({ user: userData, message: 'You are now logged in!' });
+      return res.json({ user: sanitizeUser(userData), message: 'You are now logged in!' });
     });
-  } catch (err) {
-    res.status(400).json(err);
+  } catch (error) {
+    return next(error);
   }
 });
 
@@ -56,7 +68,7 @@ router.post('/logout', (req, res) => {
       res.status(204).end();
     });
   } else {
-    res.status(404).end();
+    res.status(204).end();
   }
 });
 
