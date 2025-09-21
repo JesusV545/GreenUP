@@ -21,10 +21,12 @@ are considering purchasing, simply click add to cart and continue browsing until
 
 Set the following variables in a `.env` file as needed:
 
-- `DB_NAME`, `DB_USER`, `DB_PASS` for the MySQL connection.
-- `SESSION_SECRET` to sign session cookies (defaults to a dev-safe value).
-- `SESSION_MAX_AGE` in milliseconds to control session lifetime.
+- `DB_NAME`, `DB_USER`, `DB_PASSWORD` for the MySQL connection and `DB_HOST`, `DB_PORT` when the database is not running locally.
+- Optional pooling settings `DB_POOL_MIN`, `DB_POOL_MAX`, `DB_POOL_ACQUIRE`, `DB_POOL_IDLE` to tune Sequelize connections.
+- `DB_SSL` (`true`/`false`) and `DB_SSL_REJECT_UNAUTHORIZED` when connecting to managed MySQL with TLS.
+- `SESSION_SECRET` to sign session cookies (defaults to a dev-safe value) and `SESSION_MAX_AGE` for cookie lifetime.
 - `CORS_ORIGIN` as a comma-separated list when exposing the API to other origins.
+- `AUTH_MAX_ATTEMPTS` and `AUTH_WINDOW_MS` to control login throttling.
 
 ## At a Glance
 

@@ -1,4 +1,4 @@
-﻿const { Sequelize } = require('sequelize');
+const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -31,15 +31,13 @@ const buildOptions = () => {
 let sequelize;
 
 if (process.env.JAWSDB_URL) {
-  const options = buildOptions();
-  sequelize = new Sequelize(process.env.JAWSDB_URL, options);
+  sequelize = new Sequelize(process.env.JAWSDB_URL, buildOptions());
 } else {
-  const options = buildOptions();
   sequelize = new Sequelize({
     database: process.env.DB_NAME,
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    ...options,
+    ...buildOptions(),
   });
 }
 
