@@ -1,0 +1,6 @@
+node_modules
+seeds/*.json
+public/pages
+public/img
+views
+

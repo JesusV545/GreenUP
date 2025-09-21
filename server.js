@@ -1,4 +1,4 @@
-const path = require('path');
+﻿const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
@@ -12,7 +12,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 // LM added to see if this got handleBars to work
-const hbs = exphbs.create({ });
+const hbs = exphbs.create({});
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
@@ -28,9 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //   app.get('/', (req, res) =>
 //   res.sendFile(path.join(__dirname, './public/pages/reviews.html'))
-//   ); 
+//   );
 // removed the word "helpers " from inside until its needed
-
 
 const sess = {
   secret: 'Super secret secret',
@@ -43,15 +42,23 @@ const sess = {
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
-    db: sequelize
-  })
+    db: sequelize,
+  }),
 };
 
 app.use(session(sess));
 
-
 app.use(routes);
 
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
-});
+const startServer = async () => {
+  try {
+    await sequelize.sync({ force: false });
+    app.listen(PORT, () => {
+      console.log(`Server listening on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('Failed to start server', error);
+  }
+};
+
+startServer();

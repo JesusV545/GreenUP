@@ -1,29 +1,41 @@
+﻿const fs = require('fs');
+const path = require('path');
 const Comments = require('express').Router();
 const { readFromFile, readAndAppend } = require('../../utils/fsUtils.js');
 const uuid = require('../../utils/uuid');
 
-Comments.get('/', (req, res) => {
-  readFromFile('./db/PLACEHOLDER').then((data) => res.json(JSON.parse(data)));
+const COMMENTS_SOURCE = path.join(__dirname, '../../db/comments.json');
+
+Comments.get('/', async (req, res) => {
+  try {
+    const data = await readFromFile(COMMENTS_SOURCE);
+    return res.json(JSON.parse(data));
+  } catch (error) {
+    return res.status(501).json({ message: 'Comments storage is not configured yet.' });
+  }
 });
 
 Comments.post('/', (req, res) => {
-  console.log(req.body);
-
   const { username, topic, tip } = req.body;
 
-  if (req.body) {
-    const newComment = {
-      username,
-      tip,
-      topic,
-        comment_id: uuid(),
-    };
-
-    readAndAppend(newComment, './db/CHANGEME*********');
-    res.json(`Comment added successfully 🚀`);
-  } else {
-    res.error('Error in adding comment');
+  if (!username || !tip) {
+    return res.status(400).json({ message: 'Username and tip are required.' });
   }
+
+  if (!fs.existsSync(COMMENTS_SOURCE)) {
+    return res.status(501).json({ message: 'Comments storage is not configured yet.' });
+  }
+
+  const newComment = {
+    username,
+    tip,
+    topic,
+    comment_id: uuid(),
+    created_at: new Date().toISOString(),
+  };
+
+  readAndAppend(newComment, COMMENTS_SOURCE);
+  return res.status(201).json({ message: 'Comment added successfully.' });
 });
 
 module.exports = Comments;

@@ -1,26 +1,56 @@
 {
-  "name": "develop",
+  "name": "greenup",
   "version": "1.0.0",
-  "description": "",
+  "description": "Modernized GreenUP platform for finding and purchasing healthy foods.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run lint",
     "start": "node server.js",
-    "seeds": "node ./seeds/seed.js"
+    "seeds": "node ./seeds/seed.js",
+    "dev": "nodemon --watch controllers --watch models --watch utils --watch views --ext js,handlebars server.js",
+    "lint": "eslint \"server.js\" \"controllers/**/*.js\" \"models/**/*.js\" \"public/js/**/*.js\" \"utils/**/*.js\"",
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier --check \"**/*.{js,json,md,handlebars,css}\"",
+    "format:write": "prettier --write \"**/*.{js,json,md,handlebars,css}\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "health",
+    "nutrition",
+    "node"
+  ],
+  "author": "Jesus Vazquez",
+  "license": "MIT",
   "dependencies": {
-    "bcrypt": "^5.0.0",
-    "cloudinary": "^1.35.0",
-    "connect-session-sequelize": "^7.0.4",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-handlebars": "^5.2.0",
-    "express-session": "^1.17.1",
-    "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5",
-    "uuid": "^9.0.0"
+    "bcrypt": "^5.1.1",
+    "cloudinary": "^1.41.0",
+    "connect-session-sequelize": "^7.1.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-handlebars": "^7.1.2",
+    "express-session": "^1.18.0",
+    "mysql2": "^3.9.2",
+    "sequelize": "^6.37.1",
+    "uuid": "^9.0.1"
+  },
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JesusV545/GreenUP.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JesusV545/GreenUP/issues"
+  },
+  "homepage": "https://github.com/JesusV545/GreenUP#readme",
+  "engines": {
+    "node": ">=18.18.0",
+    "npm": ">=9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "prettier": "^3.2.5",
+    "eslint-config-prettier": "^9.1.0"
   }
 }

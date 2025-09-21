@@ -1,76 +1,63 @@
-const loginFormHandler = async (event) => {
-    event.preventDefault();
-  
-   // Collect values from the login form
-    //WILL NEED TO PAIR UP WITH THE HTML LOGIN PAGE
+﻿const loginFormHandler = async (event) => {
+  event.preventDefault();
 
-    const email = document.querySelector('#loginName').value.trim();
-    const password = document.querySelector('#loginPassword').value.trim();
-  
-    if (email && password) {
-      console.log(email, password);
-      // Send a POST request to the API endpoint
-      const response = await fetch('/api/users/login', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-  
-      if (response.ok) {
-        // If successful, redirect the browser to the profile page
-         document.location.replace('/product');
-      } else {
-        alert(response.statusText);
-      }
-    }
-  };
-  
-  const signupFormChange = async (event) => {
-    event.preventDefault();
-      document.location.replace('signUp');
-  };
+  const emailField = document.querySelector('#loginName');
+  const passwordField = document.querySelector('#loginPassword');
 
+  if (!emailField || !passwordField) {
+    return;
+  }
 
-  const cartPageChange = async (event) => {
-      event.preventDefault();
-        document.location.replace('cart');
-    
-    };
+  const email = emailField.value.trim();
+  const password = passwordField.value.trim();
 
-    const aboutUsPage = async (event) => {
-      event.preventDefault();
-        document.location.replace('aboutUs');
-    
-    };
+  if (!email || !password) {
+    window.alert('Please provide both email and password.');
+    return;
+  }
 
+  const response = await fetch('/api/users/login', {
+    method: 'POST',
+    body: JSON.stringify({ email, password }),
+    headers: { 'Content-Type': 'application/json' },
+  });
 
+  if (response.ok) {
+    window.location.replace('/product');
+  } else {
+    window.alert('Login failed. Please try again.');
+  }
+};
 
-  //REMEMBER TO CHECK AND CHANGE THE QUERY SELECTORS WITH PROPER CLASSES OR IDS IN RESPECTIVE HTML
-  
-  document
-  .getElementById('loginbutton')
-  .addEventListener('click', loginFormHandler);
-  
-  document
-  .getElementById('signup')
-  .addEventListener('click', signupFormChange);
+const navigateTo = (path) => (event) => {
+  event.preventDefault();
+  window.location.replace(path);
+};
 
-  document
-  .querySelector('#reg-btn')
-  .addEventListener('click', signupFormChange);
+if (typeof document !== 'undefined') {
+  const loginButton = document.getElementById('loginbutton');
+  const signupNav = document.getElementById('signup');
+  const registerLink = document.querySelector('#reg-btn');
+  const cartLink = document.querySelector('#cart-btn');
+  const aboutUsLink = document.querySelector('#about-us');
 
-  document
-  .querySelector('#cart-btn')
-  .addEventListener('click', cartPageChange);
+  if (loginButton) {
+    loginButton.addEventListener('click', loginFormHandler);
+  }
 
-  document
-  .querySelector('#about-us')
-  .addEventListener('click', aboutUsPage);
+  if (signupNav) {
+    signupNav.addEventListener('click', navigateTo('signUp'));
+  }
 
+  if (registerLink) {
+    registerLink.addEventListener('click', navigateTo('signUp'));
+  }
 
+  if (cartLink) {
+    cartLink.addEventListener('click', navigateTo('cart'));
+  }
 
-
-  // document
-  // .getElementById('login')
-  // .addEventListener('click', document.location.replace('login'));
-  
+  if (aboutUsLink) {
+    aboutUsLink.addEventListener('click', navigateTo('aboutUs'));
+  }
+}
