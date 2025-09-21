@@ -38,8 +38,13 @@ Comment.init(
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: [1, 2000],
+        len: [1, 1000],
       },
+    },
+    status: {
+      type: DataTypes.ENUM('visible', 'hidden', 'flagged'),
+      allowNull: false,
+      defaultValue: 'visible',
     },
   },
   {

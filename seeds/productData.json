@@ -1,32 +1,57 @@
-[
-    {
-        "name": "Honeycrisp Apple",
-        "price": 1.79,
-        "imageURL": "https://res.cloudinary.com/dxnwbl21t/image/upload/bo_5px_solid_rgb:128b15,c_scale,h_228,w_195/co_rgb:128b15,g_north_east,l_text:lora_15_style_bold:GreenUP,x_5,y_5/v1679617189/GREENUP/Products/honeycrisp_pxb1ox.webp",
-        "category": "fruit"
-    },
-    {
-        "name": "Carrot",
-        "price": 0.96,
-        "imageURL": "https://res.cloudinary.com/dxnwbl21t/image/upload/bo_5px_solid_rgb:128b15,c_scale,h_228,w_194/co_rgb:128b15,g_north_east,l_text:lora_15_style_bold:GreenUP,x_25,y_25/v1679617271/GREENUP/Products/carrots_n2ooiv.webp",
-        "category": "vegetable"
-    },
-    {
-        "name": "Grapes",
-        "price": 3.98,
-        "imageURL": "https://res.cloudinary.com/dxnwbl21t/image/upload/bo_5px_solid_rgb:128b15,c_scale,h_228,w_194/co_rgb:128b15,g_north_east,l_text:lora_25_style_bold:GreenUP,x_5,y_5/v1679617359/GREENUP/Products/grapes_ouvafd.webp",
-        "category": "fruit" 
-    },
-    {
-        "name": "Watermelon Seedless",
-        "price": 6.57,
-        "imageURL": "https://res.cloudinary.com/dxnwbl21t/image/upload/bo_5px_solid_rgb:128b15,c_scale,h_228,w_194/co_rgb:128b15,g_north_east,l_text:lora_25_style_bold:GreenUP,x_5,y_5/v1679617398/GREENUP/Products/watermelon_xrpm4v.webp",
-        "category": "fruit"
-    },
-    {
-        "name": "Bell Pepper",
-        "price": 1.01,
-        "imageURL": "https://res.cloudinary.com/dxnwbl21t/image/upload/bo_5px_solid_rgb:128b15,c_fill,g_north_east,h_228,w_194/co_rgb:128b15,e_colorize:100,g_north_east,l_text:lora_15_color_green_style_bold:GreenUP,x_25,y_25/v1679617459/GREENUP/Products/bellPepper_plmlyy.webp",
-        "category": "vegetable"
-    }
+﻿[
+  {
+    "name": "Honeycrisp Apple",
+    "slug": "honeycrisp-apple",
+    "price": 1.79,
+    "inventory": 240,
+    "imageURL": "https://res.cloudinary.com/dxnwbl21t/image/upload/bo_5px_solid_rgb:128b15,c_scale,h_228,w_195/co_rgb:128b15,g_north_east,l_text:lora_15_style_bold:GreenUP,x_5,y_5/v1679617189/GREENUP/Products/honeycrisp_pxb1ox.webp",
+    "category": "fruit",
+    "nutritionFactsURL": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/1102640/nutrients",
+    "description": "Crisp, sweet apples perfect for snacking or salads.",
+    "isActive": true
+  },
+  {
+    "name": "Carrot",
+    "slug": "carrot",
+    "price": 0.96,
+    "inventory": 500,
+    "imageURL": "https://res.cloudinary.com/dxnwbl21t/image/upload/bo_5px_solid_rgb:128b15,c_scale,h_228,w_194/co_rgb:128b15,g_north_east,l_text:lora_15_style_bold:GreenUP,x_25,y_25/v1679617271/GREENUP/Products/carrots_n2ooiv.webp",
+    "category": "vegetable",
+    "nutritionFactsURL": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/169910/nutrients",
+    "description": "Fresh organic carrots loaded with beta-carotene.",
+    "isActive": true
+  },
+  {
+    "name": "Grapes",
+    "slug": "grapes",
+    "price": 3.98,
+    "inventory": 180,
+    "imageURL": "https://res.cloudinary.com/dxnwbl21t/image/upload/bo_5px_solid_rgb:128b15,c_scale,h_228,w_194/co_rgb:128b15,g_north_east,l_text:lora_25_style_bold:GreenUP,x_5,y_5/v1679617359/GREENUP/Products/grapes_ouvafd.webp",
+    "category": "fruit",
+    "nutritionFactsURL": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/1102640/nutrients",
+    "description": "Seedless grapes with a juicy burst of flavor.",
+    "isActive": true
+  },
+  {
+    "name": "Watermelon Seedless",
+    "slug": "watermelon-seedless",
+    "price": 6.57,
+    "inventory": 75,
+    "imageURL": "https://res.cloudinary.com/dxnwbl21t/image/upload/bo_5px_solid_rgb:128b15,c_scale,h_228,w_194/co_rgb:128b15,g_north_east,l_text:lora_25_style_bold:GreenUP,x_5,y_5/v1679617398/GREENUP/Products/watermelon_xrpm4v.webp",
+    "category": "fruit",
+    "nutritionFactsURL": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/169910/nutrients",
+    "description": "Refreshing seedless watermelon perfect for hot days.",
+    "isActive": true
+  },
+  {
+    "name": "Bell Pepper",
+    "slug": "bell-pepper",
+    "price": 1.01,
+    "inventory": 320,
+    "imageURL": "https://res.cloudinary.com/dxnwbl21t/image/upload/bo_5px_solid_rgb:128b15,c_fill,g_north_east,h_228,w_194/co_rgb:128b15,e_colorize:100,g_north_east,l_text:lora_15_color_green_style_bold:GreenUP,x_25,y_25/v1679617459/GREENUP/Products/bellPepper_plmlyy.webp",
+    "category": "vegetable",
+    "nutritionFactsURL": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/169910/nutrients",
+    "description": "Crisp bell peppers ideal for salads, stir-fries, or stuffing.",
+    "isActive": true
+  }
 ]
