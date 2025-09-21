@@ -1,4 +1,4 @@
-﻿const logout = async () => {
+﻿const performLogout = async () => {
   const response = await fetch('/api/auth/logout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -12,9 +12,11 @@
 };
 
 if (typeof document !== 'undefined') {
-  const logoutButton = document.querySelector('#logout');
+  document.addEventListener('click', (event) => {
+    const trigger = event.target.closest('[data-action="logout"], #logout');
+    if (!trigger) return;
 
-  if (logoutButton) {
-    logoutButton.addEventListener('click', logout);
-  }
+    event.preventDefault();
+    performLogout();
+  });
 }

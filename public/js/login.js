@@ -1,4 +1,4 @@
-﻿const select = (selector) => document.querySelector(selector);
+const select = (selector) => document.querySelector(selector);
 
 const setAlert = (element, message) => {
   if (!element) return;
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify({ email, password }),
         });
 
-        const message = await handleResponse(response, loginAlert);
+        const message = await handleResponse(response);
 
         if (message) {
           setAlert(loginAlert, message);
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify({ name, email, password }),
         });
 
-        const message = await handleResponse(response, signupAlert);
+        const message = await handleResponse(response);
 
         if (message) {
           setAlert(signupAlert, message);
