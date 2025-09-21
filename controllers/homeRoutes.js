@@ -1,19 +1,16 @@
 ﻿const router = require('express').Router();
 
-router.get('/', (req, res) => {
-  res.render('login');
-});
+const render = (view) => (req, res, next) => {
+  try {
+    res.render(view);
+  } catch (error) {
+    next(error);
+  }
+};
 
-router.get('/signUp', (req, res) => {
-  res.render('signUp');
-});
-
-router.get('/cart', (req, res) => {
-  res.render('cart');
-});
-
-router.get('/aboutUs', (req, res) => {
-  res.render('aboutUs');
-});
+router.get('/', render('login'));
+router.get('/signup', render('signUp'));
+router.get('/cart', render('cart'));
+router.get('/about-us', render('aboutUs'));
 
 module.exports = router;

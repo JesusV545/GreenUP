@@ -18,7 +18,7 @@
     return;
   }
 
-  const response = await fetch('/api/users', {
+  const response = await fetch('/api/auth', {
     method: 'POST',
     body: JSON.stringify({ name, email, password }),
     headers: {
@@ -27,7 +27,7 @@
   });
 
   if (response.ok) {
-    window.location.replace('/product');
+    window.location.replace('/products');
   } else {
     window.alert('Unable to create account. Please try again.');
   }

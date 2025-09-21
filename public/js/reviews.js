@@ -17,13 +17,12 @@
       }
 
       const payload = {
-        feedback,
-        email,
-        feedbackType: 'Complaint',
+        body: feedback,
+        topic: email ? `Feedback from ${email}` : 'Feedback',
       };
 
       try {
-        const response = await fetch('/api/feedback', {
+        const response = await fetch('/api/comments', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -35,8 +34,7 @@
           throw new Error('Request failed');
         }
 
-        const data = await response.json();
-        window.alert(data.status || 'Thank you for the feedback!');
+        window.alert('Thank you for the feedback!');
 
         if (feedbackField) {
           feedbackField.value = '';

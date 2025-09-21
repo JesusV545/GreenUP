@@ -1,10 +1,16 @@
-const { Model, DataTypes } = require('sequelize');
+﻿const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Comment extends Model {}
 
 Comment.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -15,20 +21,30 @@ Comment.init(
     },
     product_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'product',
         key: 'id',
       },
     },
+    topic: {
+      type: DataTypes.STRING(120),
+      allowNull: true,
+      validate: {
+        len: [0, 120],
+      },
+    },
     body: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
+      validate: {
+        len: [1, 2000],
+      },
     },
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'comment',
