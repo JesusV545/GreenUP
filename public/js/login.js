@@ -1,78 +1,124 @@
-﻿const loginFormHandler = async (event) => {
-  event.preventDefault();
+﻿const select = (selector) => document.querySelector(selector);
 
-  const emailField = document.querySelector('#loginName');
-  const passwordField = document.querySelector('#loginPassword');
+const setAlert = (element, message) => {
+  if (!element) return;
+  element.textContent = message;
+  element.classList.toggle('is-visible', Boolean(message));
+};
 
-  if (!emailField || !passwordField) {
-    return;
+const setControlValidity = (input, isValid) => {
+  if (!input) return;
+  input.classList.toggle('is-invalid', !isValid);
+};
+
+const handleResponse = async (response) => {
+  if (response.ok) {
+    return null;
   }
-
-  const email = emailField.value.trim();
-  const password = passwordField.value.trim();
-
-  if (!email || !password) {
-    window.alert('Please provide both email and password.');
-    return;
-  }
-
   try {
-    const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    if (response.ok) {
-      window.location.replace('/products');
-      return;
-    }
-
-    let message = 'Login failed. Please try again.';
-    try {
-      const data = await response.json();
-      if (data?.message) {
-        message = data.message;
-      }
-    } catch (parseError) {
-      // ignore JSON parse issues and fall back to default message
-    }
-
-    window.alert(message);
+    const data = await response.json();
+    return data?.message || 'Something went wrong. Please try again.';
   } catch (error) {
-    window.alert('Unable to reach the server. Please try again later.');
+    return 'Something went wrong. Please try again.';
   }
 };
 
-const navigateTo = (path) => (event) => {
-  event.preventDefault();
-  window.location.replace(path);
-};
+document.addEventListener('DOMContentLoaded', () => {
+  const loginForm = select('#login-form');
+  const signupForm = select('#signup-form');
+  const loginAlert = select('[data-alert="login"]');
+  const signupAlert = select('[data-alert="signup"]');
 
-if (typeof document !== 'undefined') {
-  const loginButton = document.getElementById('loginbutton');
-  const signupNav = document.getElementById('signup');
-  const registerLink = document.querySelector('#reg-btn');
-  const cartLink = document.querySelector('#cart-btn');
-  const aboutUsLink = document.querySelector('#about-us');
+  if (loginForm) {
+    loginForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const emailInput = select('#login-email');
+      const passwordInput = select('#login-password');
 
-  if (loginButton) {
-    loginButton.addEventListener('click', loginFormHandler);
+      const email = emailInput?.value.trim();
+      const password = passwordInput?.value.trim();
+
+      const isEmailValid = Boolean(email);
+      const isPasswordValid = Boolean(password);
+
+      setControlValidity(emailInput, isEmailValid);
+      setControlValidity(passwordInput, isPasswordValid);
+
+      if (!isEmailValid || !isPasswordValid) {
+        setAlert(loginAlert, 'Please provide your email and password.');
+        return;
+      }
+
+      setAlert(loginAlert, '');
+
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const message = await handleResponse(response, loginAlert);
+
+        if (message) {
+          setAlert(loginAlert, message);
+          setControlValidity(emailInput, false);
+          setControlValidity(passwordInput, false);
+          return;
+        }
+
+        window.location.replace('/products');
+      } catch (error) {
+        setAlert(loginAlert, 'Unable to reach the server. Please try again later.');
+      }
+    });
   }
 
-  if (signupNav) {
-    signupNav.addEventListener('click', navigateTo('/signup'));
-  }
+  if (signupForm) {
+    signupForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const nameInput = select('#signup-name');
+      const emailInput = select('#signup-email');
+      const passwordInput = select('#signup-password');
 
-  if (registerLink) {
-    registerLink.addEventListener('click', navigateTo('/signup'));
-  }
+      const name = nameInput?.value.trim();
+      const email = emailInput?.value.trim();
+      const password = passwordInput?.value.trim();
 
-  if (cartLink) {
-    cartLink.addEventListener('click', navigateTo('/cart'));
-  }
+      const isNameValid = name.length >= 2;
+      const isEmailValid = Boolean(email);
+      const isPasswordValid = password.length >= 8;
 
-  if (aboutUsLink) {
-    aboutUsLink.addEventListener('click', navigateTo('/about-us'));
+      setControlValidity(nameInput, isNameValid);
+      setControlValidity(emailInput, isEmailValid);
+      setControlValidity(passwordInput, isPasswordValid);
+
+      if (!isNameValid || !isEmailValid || !isPasswordValid) {
+        setAlert(signupAlert, 'Please complete all fields with valid information.');
+        return;
+      }
+
+      setAlert(signupAlert, '');
+
+      try {
+        const response = await fetch('/api/auth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, password }),
+        });
+
+        const message = await handleResponse(response, signupAlert);
+
+        if (message) {
+          setAlert(signupAlert, message);
+          setControlValidity(emailInput, false);
+          return;
+        }
+
+        window.location.replace('/products');
+      } catch (error) {
+        setAlert(signupAlert, 'Unable to create your account right now. Please retry in a moment.');
+      }
+    });
   }
-}
+});

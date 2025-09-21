@@ -1,0 +1,153 @@
+﻿:root {
+  --brand-primary: #128b15;
+  --brand-dark: #0a560b;
+  --brand-light: #f7f9f4;
+  --text-dark: #1f2933;
+  --text-muted: #50667b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  color: var(--text-dark);
+  background-color: var(--brand-light);
+  margin: 0;
+}
+
+.site-header {
+  background-color: var(--brand-primary);
+  color: #fff;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.navbar .nav-link {
+  color: #fff;
+  font-weight: 500;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus,
+.navbar .nav-link:active,
+.navbar .nav-link.active {
+  color: #fefefe;
+  text-decoration: underline;
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 280px;
+  background:
+    linear-gradient(180deg, rgba(18, 139, 21, 0.75), rgba(10, 86, 11, 0.85)),
+    url('https://res.cloudinary.com/dxnwbl21t/image/upload/v1679953437/Veggies_dl0ogo.webp')
+      center/cover no-repeat;
+  color: #fff;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(10, 86, 11, 0.8), rgba(18, 139, 21, 0.25));
+  mix-blend-mode: multiply;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.hero__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.hero__lead {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 36rem;
+  margin-bottom: 0;
+}
+
+.site-main {
+  min-height: 60vh;
+}
+
+.product-card .card-img-top {
+  object-fit: cover;
+  height: 220px;
+}
+
+.product-card .card-title {
+  margin-bottom: 0.5rem;
+}
+
+.product-card .price-tag {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--brand-primary);
+}
+
+.site-footer {
+  background-color: var(--brand-dark);
+  color: #f0f5f1;
+}
+
+.site-footer a {
+  color: #d4ead6;
+  text-decoration: none;
+}
+
+.site-footer a:hover,
+.site-footer a:focus {
+  text-decoration: underline;
+}
+
+.cart-table img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.auth-card .form-control.is-invalid {
+  border-color: #e55353;
+}
+
+.auth-card .form-text {
+  color: var(--text-muted);
+}
+
+.auth-card .alert {
+  display: none;
+}
+
+.auth-card .alert.is-visible {
+  display: block;
+}
+
+@media (max-width: 575.98px) {
+  .hero {
+    min-height: 220px;
+    text-align: center;
+  }
+
+  .hero__lead {
+    margin-inline: auto;
+  }
+}
