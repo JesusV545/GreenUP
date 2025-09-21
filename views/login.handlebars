@@ -1,89 +1,106 @@
-
-<!-- Pills content -->
-<div class="tab-content row h-100 justify-content-center align-items-center">
-  <div class="tab-pane fade show active row h-100 col-10 col-md-8 col-lg-6" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-    <form class="m-5">
-      <!-- Email input -->
-      <div class="form-outline mb-4 ">
-        <input type="email" id="loginName" class="form-control" />
-        <label class="form-label" for="loginName">Email or username</label>
-      </div>
-
-      <!-- Password input -->
-      <div class="form-outline mb-4">
-        <input type="password" id="loginPassword" class="form-control" />
-        <label class="form-label" for="loginPassword">Password</label>
-      </div>
-
-
-      <!-- Submit button -->
-      <button type="submit" class="btn btn-success btn-block w-25 mb-4" id="loginbutton">Login</button>
-
-      <!-- 2 column grid layout -->
-      <div class="row m-5 mb-4">
-        <div class="col-md-12 d-flex justify-content-center">
-          <!-- Checkbox -->
-          <div class="form-check mb-3 mb-md-0">
-            <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-            <label class="form-check-label" for="loginCheck"> Remember me </label>
+﻿<section class="auth py-5">
+  <div class="container">
+    <div class="row justify-content-center g-4">
+      <div class="col-lg-5">
+        <div class="card shadow-sm auth-card">
+          <div class="card-body p-4 p-md-5">
+            <h1 class="h3 fw-semibold mb-3">Welcome back</h1>
+            <p class="text-muted mb-4">Sign in to view your saved items and personalized picks.</p>
+            <div class="alert alert-danger" role="alert" data-alert="login"></div>
+            <form id="login-form" class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label class="form-label" for="login-email">Email address</label>
+                <input
+                  id="login-email"
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  autocomplete="email"
+                  required
+                />
+                <div class="invalid-feedback">Please enter the email you registered with.</div>
+              </div>
+              <div class="mb-4">
+                <label class="form-label" for="login-password">Password</label>
+                <input
+                  id="login-password"
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  autocomplete="current-password"
+                  required
+                  minlength="8"
+                />
+                <div class="invalid-feedback">Your password must be at least 8 characters.</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="remember-me" />
+                  <label class="form-check-label" for="remember-me">Keep me signed in</label>
+                </div>
+                <a href="#" class="small text-decoration-none">Forgot password?</a>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success">Sign in</button>
+              </div>
+            </form>
           </div>
         </div>
-
-      <!-- Register buttons -->
-      <div class="text-center">
-        <p>Not a member? <a id="reg-btn" href="#!">Register</a></p>
       </div>
-    </form>
+      <div class="col-lg-5">
+        <div class="card shadow-sm auth-card">
+          <div class="card-body p-4 p-md-5">
+            <h2 class="h4 fw-semibold mb-3">Create a GreenUP account</h2>
+            <p class="text-muted mb-4">Track orders, save favorites, and get personalized produce tips.</p>
+            <div class="alert alert-danger" role="alert" data-alert="signup"></div>
+            <form id="signup-form" class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label class="form-label" for="signup-name">Name</label>
+                <input
+                  id="signup-name"
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  autocomplete="name"
+                  required
+                />
+                <div class="invalid-feedback">Let us know what to call you.</div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="signup-email">Email address</label>
+                <input
+                  id="signup-email"
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  autocomplete="email"
+                  required
+                />
+                <div class="invalid-feedback">Please provide a valid email.</div>
+              </div>
+              <div class="mb-4">
+                <label class="form-label" for="signup-password">Password</label>
+                <input
+                  id="signup-password"
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+                />
+                <div class="form-text">Use 8+ characters with upper, lower, and a number.</div>
+                <div class="invalid-feedback">Choose a stronger password.</div>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-outline-success">Sign up</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-    <form>
-
-      <!-- Name input -->
-      <div class="form-outline mb-4">
-        <input type="text" id="registerName" class="form-control" />
-        <label class="form-label" for="registerName">Name</label>
-      </div>
-
-      <!-- Username input -->
-      <div class="form-outline mb-4">
-        <input type="text" id="registerUsername" class="form-control" />
-        <label class="form-label" for="registerUsername">Username</label>
-      </div>
-
-      <!-- Email input -->
-      <div class="form-outline mb-4">
-        <input type="email" id="registerEmail" class="form-control" />
-        <label class="form-label" for="registerEmail">Email</label>
-      </div>
-
-      <!-- Password input -->
-      <div class="form-outline mb-4">
-        <input type="password" id="registerPassword" class="form-control" />
-        <label class="form-label" for="registerPassword">Password</label>
-      </div>
-
-      <!-- Repeat Password input -->
-      <div class="form-outline mb-4">
-        <input type="password" id="registerRepeatPassword" class="form-control" />
-        <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-      </div>
-
-      <!-- Checkbox -->
-      <div class="form-check d-flex justify-content-center mb-4">
-        <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
-          aria-describedby="registerCheckHelpText" />
-        <label class="form-check-label" for="registerCheck">
-          I have read and agree to the terms
-        </label>
-      </div>
-
-      <!-- Submit button -->
-      <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
-    </form>
-  </div>
-</div>
-<script src="/js/login.js"></script>
-<script src="/js/profile.js"></script>
-<!-- Pills content -->
-
-
+</section>
+<script defer src="/js/login.js"></script>
+<script defer src="/js/profile.js"></script>

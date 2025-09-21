@@ -1,47 +1,51 @@
-<main class="flex bg-lime-300 h-screen grid grid-rows-3 grid-cols-4 gap-4">
-    <div class="bg-rose-600 rounded-xl text-center border-4 border-lime-800 row-span-3">
-    </div>
-{{#each products as |product|}}
-<section class="product-cards">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
-<div class="container">
-<div class="col-xs-12 col-md-6 shadow p-3 mb-5 bg-white rounded bootstrap snippets bootdeys">
-  
-  <!-- product -->
-  <div class="product-content product-wrap clearfix">
-    <div class="row">
-        <div class="col-md-5 col-sm-12 col-xs-12">
-          <div class="product-image"> 
-            <img src={{imageURL}} alt="194x228" class="img-responsive"> 
-          </div>
-        </div>
-        <div class="col-md-7 col-sm-12 col-xs-12">
-        <div class="product-deatil">
-            <h3 class="name">
-              <a href="/products/{{product.id}}">
-                               <p>{{name}}</p>
-                {{!-- <span>{{category}}</span> --}}
-              </a>
-            </h5>
-            <p class="price-container">
-              <span>Price: ${{price}}</span>
-            </p>
-            <span class="tag1"></span> 
-        </div>
-        
-        <div class="product-info smart-form">
-          <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-6"> 
-              <a href="javascript:void(0);" class="btn btn-success">Add to cart</a>
-            </div>
-          </div>
-        </div>
+﻿<section class="catalog py-5">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h2 class="h3 fw-semibold mb-1">Shop fresh produce</h2>
+        <p class="text-muted mb-0">Browse seasonal favorites and pantry staples.</p>
       </div>
     </div>
+
+    {{#if products.length}}
+      <div class="row g-4">
+        {{#each products}}
+          <div class="col-sm-6 col-lg-4">
+            <article class="card h-100 shadow-sm product-card">
+              <img
+                class="card-img-top"
+                src="{{imageURL}}"
+                alt="{{name}}"
+                loading="lazy"
+              />
+              <div class="card-body d-flex flex-column gap-2">
+                <h3 class="h5 card-title mb-0">
+                  <a class="stretched-link text-decoration-none text-dark" href="/products/{{id}}">
+                    {{name}}
+                  </a>
+                </h3>
+                <p class="text-muted small text-uppercase mb-1">{{category}}</p>
+                <p class="price-tag mb-3">${{price}}</p>
+                <button
+                  type="button"
+                  class="btn btn-success btn-sm mt-auto"
+                  data-add-to-cart
+                  data-product-id="{{id}}"
+                  data-product-name="{{name}}"
+                  data-product-image="{{imageURL}}"
+                  data-product-price="{{price}}"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </article>
+          </div>
+        {{/each}}
+      </div>
+    {{else}}
+      <div class="alert alert-info" role="status">
+        We&apos;re restocking our catalog. Check back soon for fresh additions!
+      </div>
+    {{/if}}
   </div>
 </section>
-{{/each}}
-</main>
-
-<script src="/js/login.js"></script>
