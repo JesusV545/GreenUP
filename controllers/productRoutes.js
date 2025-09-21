@@ -24,7 +24,10 @@ const respondNotFound = (req, res, message) => {
 // route to get all products
 router.get('/', async (req, res, next) => {
   try {
-    const productData = await Product.findAll();
+    const productData = await Product.findAll({
+      where: { isActive: true },
+      order: [['name', 'ASC']],
+    });
     const products = productData.map((product) => product.get({ plain: true }));
     return respondWithViewOrJson(req, res, 'all', { products });
   } catch (error) {
@@ -42,7 +45,7 @@ router.get('/:id', async (req, res, next) => {
   try {
     const productData = await Product.findByPk(req.params.id);
 
-    if (!productData) {
+    if (!productData || !productData.isActive) {
       return respondNotFound(req, res, 'No product found.');
     }
 

@@ -2,6 +2,7 @@
 const { Comment, Product, User } = require('../../models');
 
 const MAX_PAGE_SIZE = 50;
+const ALLOWED_STATUSES = ['visible', 'hidden', 'flagged'];
 
 const parsePagination = (req) => {
   const page = Math.max(parseInt(req.query.page, 10) || 1, 1);
@@ -25,6 +26,13 @@ router.get('/', async (req, res, next) => {
     const { page, limit, offset } = parsePagination(req);
     const where = {};
 
+    const statusFilter = req.query.status;
+    if (statusFilter && ALLOWED_STATUSES.includes(statusFilter)) {
+      where.status = statusFilter;
+    } else {
+      where.status = 'visible';
+    }
+
     const productIdFilter = parseInt(req.query.productId, 10);
     if (!Number.isNaN(productIdFilter)) {
       where.product_id = productIdFilter;
@@ -37,7 +45,7 @@ router.get('/', async (req, res, next) => {
       order: [['created_at', 'DESC']],
       include: [
         { model: User, attributes: ['id', 'name'] },
-        { model: Product, attributes: ['id', 'name'] },
+        { model: Product, attributes: ['id', 'name', 'slug'] },
       ],
     });
 
@@ -59,7 +67,7 @@ router.get('/:id', async (req, res, next) => {
     const comment = await Comment.findByPk(req.params.id, {
       include: [
         { model: User, attributes: ['id', 'name'] },
-        { model: Product, attributes: ['id', 'name'] },
+        { model: Product, attributes: ['id', 'name', 'slug'] },
       ],
     });
 
@@ -105,7 +113,7 @@ router.post('/', requireAuth, async (req, res, next) => {
 
 router.put('/:id', requireAuth, async (req, res, next) => {
   try {
-    const { topic, body } = req.body;
+    const { topic, body, status } = req.body;
     const comment = await Comment.findByPk(req.params.id);
 
     if (!comment) {
@@ -118,9 +126,12 @@ router.put('/:id', requireAuth, async (req, res, next) => {
         .json({ message: 'You do not have permission to update this comment.' });
     }
 
+    const nextStatus = ALLOWED_STATUSES.includes(status) ? status : comment.status;
+
     await comment.update({
       topic: typeof topic === 'undefined' ? comment.topic : topic,
       body: body || comment.body,
+      status: nextStatus,
     });
 
     return res.json({ data: comment });
