@@ -1,6 +1,6 @@
 const sequelize = require('../config/connection');
 const { User, Product } = require('../models');
-// rename the file userDate to Data to fix line 4 
+// rename the file userDate to Data to fix line 4
 const userData = require('./userDate.json');
 const productData = require('./productData.json');
 
@@ -13,7 +13,7 @@ const seedDatabase = async () => {
   });
 
   await Product.bulkCreate(productData, {
-    returning:true,
+    returning: true,
   });
 
   process.exit(0);

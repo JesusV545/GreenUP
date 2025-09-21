@@ -1,53 +1,42 @@
-const newFormHandler = async (event) => {
-    event.preventDefault();
-    
-    //NEED TO MAKE CHANGES TO LINKS  OF IDS OR CLASS WITH HTML
-    const name = document.querySelector('#name1').value.trim();
-    const email = document.querySelector('#email1').value.trim();
-    const password = document.querySelector('#password1').value.trim();
-    // const description = document.querySelector('#project-desc').value.trim();
-  
-    if (name && email && password) {
-      const response = await fetch(`/api/users`, {
-        method: 'POST',
-        body: JSON.stringify({ name, email, password }),
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-  
-      if (response.ok) {
-        document.location.replace('/product');
-      } else {
-        alert('Route failed');
-      }
-    }
-  };
-  
-  // const delButtonHandler = async (event) => {
-  //   if (event.target.hasAttribute('data-id')) {
-  //     const id = event.target.getAttribute('data-id');
-  
-  //     const response = await fetch(`/api/projects/${id}`, {
-  //       method: 'DELETE',
-  //     });
-  
-  //     if (response.ok) {
-  //       document.location.replace('/profile');
-  //     } else {
-  //       alert('Failed to delete project');
-  //     }
-  //   }
-  // };
-  
-  document
-    .querySelector('#signup-btn')
-    .addEventListener('click', newFormHandler);
+﻿const newFormHandler = async (event) => {
+  event.preventDefault();
 
-    // document
-    // .querySelector('#reg-btn')
-    // .addEventListener('click', newFormHandler);
-  
-  // document
-  //   .querySelector('.project-list')
-  //   .addEventListener('click', delButtonHandler);
+  const nameField = document.querySelector('#name1');
+  const emailField = document.querySelector('#email1');
+  const passwordField = document.querySelector('#password1');
+
+  if (!nameField || !emailField || !passwordField) {
+    return;
+  }
+
+  const name = nameField.value.trim();
+  const email = emailField.value.trim();
+  const password = passwordField.value.trim();
+
+  if (!name || !email || !password) {
+    window.alert('Please complete all fields.');
+    return;
+  }
+
+  const response = await fetch('/api/users', {
+    method: 'POST',
+    body: JSON.stringify({ name, email, password }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (response.ok) {
+    window.location.replace('/product');
+  } else {
+    window.alert('Unable to create account. Please try again.');
+  }
+};
+
+if (typeof document !== 'undefined') {
+  const signupButton = document.querySelector('#signup-btn');
+
+  if (signupButton) {
+    signupButton.addEventListener('click', newFormHandler);
+  }
+}

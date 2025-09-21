@@ -1,15 +1,20 @@
-const logout = async () => {
-    const response = await fetch('/api/users/logout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    });
-  
-    if (response.ok) {
-      document.location.replace('/');
-    } else {
-      alert(response.statusText);
-    }
-  };
-  
-  document.querySelector('#logout').addEventListener('click', logout);//NEED TO MAKE SURE THE ID IS LINKED TO THE LOGIN HTML
-  
+﻿const logout = async () => {
+  const response = await fetch('/api/users/logout', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (response.ok) {
+    window.location.replace('/');
+  } else {
+    window.alert('Unable to log out. Please try again.');
+  }
+};
+
+if (typeof document !== 'undefined') {
+  const logoutButton = document.querySelector('#logout');
+
+  if (logoutButton) {
+    logoutButton.addEventListener('click', logout);
+  }
+}
