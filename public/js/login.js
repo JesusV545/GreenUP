@@ -16,16 +16,31 @@
     return;
   }
 
-  const response = await fetch('/api/auth/login', {
-    method: 'POST',
-    body: JSON.stringify({ email, password }),
-    headers: { 'Content-Type': 'application/json' },
-  });
+  try {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-  if (response.ok) {
-    window.location.replace('/products');
-  } else {
-    window.alert('Login failed. Please try again.');
+    if (response.ok) {
+      window.location.replace('/products');
+      return;
+    }
+
+    let message = 'Login failed. Please try again.';
+    try {
+      const data = await response.json();
+      if (data?.message) {
+        message = data.message;
+      }
+    } catch (parseError) {
+      // ignore JSON parse issues and fall back to default message
+    }
+
+    window.alert(message);
+  } catch (error) {
+    window.alert('Unable to reach the server. Please try again later.');
   }
 };
 
