@@ -7,9 +7,10 @@ const exphbs = require('express-handlebars');
 const helmet = require('helmet');
 const compression = require('compression');
 const cors = require('cors');
+const pinoHttp = require('pino-http');
 const routes = require('./controllers');
 
-const sequelize = require('./config/connection');
+const { sequelize, logger } = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
@@ -22,6 +23,21 @@ const hbs = exphbs.create({});
 app.disable('x-powered-by');
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
+app.use(
+  pinoHttp({
+    logger,
+    autoLogging: true,
+    serializers: {
+      req(req) {
+        return { method: req.method, url: req.url, id: req.id };
+      },
+      res(res) {
+        return { statusCode: res.statusCode };
+      },
+    },
+  })
+);
 
 const allowedOrigins = process.env.CORS_ORIGIN
   ? process.env.CORS_ORIGIN.split(',')
@@ -69,6 +85,16 @@ if (isProduction) {
 
 app.use(session(sess));
 
+app.get('/healthz', async (req, res) => {
+  try {
+    await sequelize.authenticate();
+    res.status(200).json({ status: 'ok', uptime: process.uptime() });
+  } catch (error) {
+    req.log.error({ err: error }, 'Database health check failed');
+    res.status(503).json({ status: 'error', message: 'Database connection unavailable' });
+  }
+});
+
 app.use(routes);
 
 app.use((req, res, next) => {
@@ -83,6 +109,8 @@ app.use(
     const status = err.status || 500;
     const message = err.message || 'An unexpected error occurred.';
 
+    req.log.error({ err }, 'Request failed');
+
     if (req.accepts(['json', 'html', 'text']) === 'json') {
       return res.status(status).json({
         message,
@@ -94,15 +122,40 @@ app.use(
   }
 );
 
+let server;
+
 const startServer = async () => {
   try {
-    await sequelize.sync({ force: false });
-    app.listen(PORT, () => {
-      console.log(`Server listening on port ${PORT}`);
+    await sequelize.authenticate();
+    if (process.env.DB_SYNC === 'true') {
+      await sequelize.sync({ alter: false });
+    }
+
+    server = app.listen(PORT, () => {
+      logger.info({ port: PORT }, 'Server listening');
     });
   } catch (error) {
-    console.error('Failed to start server', error);
+    logger.error({ err: error }, 'Failed to start server');
+    process.exit(1);
   }
 };
+
+const shutdown = async (signal) => {
+  logger.info({ signal }, 'Received shutdown signal');
+  try {
+    if (server) {
+      await new Promise((resolve) => server.close(resolve));
+    }
+    await sequelize.close();
+    logger.info('Shutdown complete');
+    process.exit(0);
+  } catch (error) {
+    logger.error({ err: error }, 'Error during shutdown');
+    process.exit(1);
+  }
+};
+
+process.on('SIGTERM', () => shutdown('SIGTERM'));
+process.on('SIGINT', () => shutdown('SIGINT'));
 
 startServer();

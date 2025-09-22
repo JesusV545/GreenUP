@@ -11,7 +11,10 @@
     "lint": "eslint \"server.js\" \"controllers/**/*.js\" \"models/**/*.js\" \"public/js/**/*.js\" \"utils/**/*.js\"",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --check \"**/*.{js,json,md,handlebars,css}\"",
-    "format:write": "prettier --write \"**/*.{js,json,md,handlebars,css}\""
+    "format:write": "prettier --write \"**/*.{js,json,md,handlebars,css}\"",
+    "db:migrate": "node ./db/migrate.js up",
+    "db:migrate:undo": "node ./db/migrate.js down",
+    "db:migrate:status": "node ./db/migrate.js status"
   },
   "keywords": [
     "health",
@@ -33,7 +36,10 @@
     "uuid": "^9.0.1",
     "helmet": "^7.1.0",
     "compression": "^1.7.4",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "pino": "^9.0.0",
+    "pino-http": "^9.0.0",
+    "umzug": "^3.3.1"
   },
   "type": "commonjs",
   "repository": {
@@ -54,6 +60,7 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-promise": "^6.1.1",
     "prettier": "^3.2.5",
-    "eslint-config-prettier": "^9.1.0"
+    "eslint-config-prettier": "^9.1.0",
+    "pino-pretty": "^11.0.0"
   }
 }
