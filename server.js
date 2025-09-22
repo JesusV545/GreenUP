@@ -1,4 +1,4 @@
-﻿require('dotenv').config();
+require('dotenv').config();
 
 const path = require('path');
 const express = require('express');
@@ -64,6 +64,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+const sessionStore = new SequelizeStore({
+  db: sequelize,
+});
+
 const sess = {
   secret: process.env.SESSION_SECRET || 'change-me',
   cookie: {
@@ -74,9 +78,7 @@ const sess = {
   },
   resave: false,
   saveUninitialized: false,
-  store: new SequelizeStore({
-    db: sequelize,
-  }),
+  store: sessionStore,
 };
 
 if (isProduction) {
@@ -131,6 +133,8 @@ const startServer = async () => {
       await sequelize.sync({ alter: false });
     }
 
+    await sessionStore.sync();
+
     server = app.listen(PORT, () => {
       logger.info({ port: PORT }, 'Server listening');
     });
@@ -159,3 +163,7 @@ process.on('SIGTERM', () => shutdown('SIGTERM'));
 process.on('SIGINT', () => shutdown('SIGINT'));
 
 startServer();
+
+
+
+
