@@ -29,11 +29,18 @@ html {
 }
 
 body {
-  font-family: 'Manrope', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family:
+    'Manrope',
+    'Inter',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
   color: var(--text-body);
-  background: radial-gradient(circle at top left, rgba(15, 118, 110, 0.14), transparent 45%),
-    radial-gradient(circle at 20% 60%, rgba(249, 115, 22, 0.08), transparent 55%),
-    #f5fbf9;
+  background:
+    radial-gradient(circle at top left, rgba(15, 118, 110, 0.14), transparent 45%),
+    radial-gradient(circle at 20% 60%, rgba(249, 115, 22, 0.08), transparent 55%), #f5fbf9;
   margin: 0;
   min-height: 100vh;
   line-height: 1.6;
@@ -122,7 +129,10 @@ main {
   font-weight: 600;
   border-radius: var(--radius-sm);
   padding: 0.65rem 1.5rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
 }
 
 .btn-success:hover,
@@ -150,7 +160,9 @@ main {
   border-radius: var(--radius-sm);
   border: 1px solid rgba(15, 118, 110, 0.18);
   padding: 0.75rem 1rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .form-control:focus {
@@ -214,7 +226,8 @@ main {
 .hero {
   margin-top: clamp(2rem, 5vw, 3.5rem);
   border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(15, 118, 110, 0.9), rgba(36, 209, 146, 0.75)),
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.9), rgba(36, 209, 146, 0.75)),
     url('https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=1600&q=80')
       center/cover;
   color: #fff;
@@ -286,7 +299,9 @@ main {
   box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .product-tile:hover,
