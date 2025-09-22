@@ -1,4 +1,4 @@
-﻿#!/bin/sh
+#!/bin/sh
 set -e
 
 if [ "$RUN_MIGRATIONS" != "false" ]; then
