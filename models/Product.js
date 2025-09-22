@@ -46,6 +46,7 @@ Product.init(
     },
     imageURL: {
       type: DataTypes.STRING,
+      field: 'imageURL',
     },
     category: {
       type: DataTypes.STRING,
@@ -54,6 +55,7 @@ Product.init(
     nutritionFactsURL: {
       type: DataTypes.STRING,
       allowNull: true,
+      field: 'nutritionFactsURL',
     },
     description: {
       type: DataTypes.TEXT,
@@ -63,6 +65,7 @@ Product.init(
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true,
+      field: 'isActive',
     },
   },
   {
