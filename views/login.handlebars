@@ -1,11 +1,35 @@
-﻿<section class="auth py-5">
+<section class="auth-section section-padding pt-0">
   <div class="container">
-    <div class="row justify-content-center g-4">
+    <div class="row g-4 g-xl-5 align-items-stretch">
       <div class="col-lg-5">
-        <div class="card shadow-sm auth-card">
-          <div class="card-body p-4 p-md-5">
-            <h1 class="h3 fw-semibold mb-3">Welcome back</h1>
-            <p class="text-muted mb-4">Sign in to view your saved items and personalized picks.</p>
+        <article class="glass-card feature-card h-100">
+          <span class="section-heading__eyebrow">Why members love us</span>
+          <h2 class="h3 fw-semibold mb-2">Personalized wellness in every delivery</h2>
+          <p class="text-muted mb-4">
+            Tailored recommendations, seasonal rotating selections, and a seamless checkout keep your
+            kitchen stocked with vibrant staples.
+          </p>
+          <ul class="feature-card__list">
+            <li class="feature-card__item">
+              <i class="fas fa-seedling"></i>
+              <span>Discover peak-season produce sourced from trusted growers.</span>
+            </li>
+            <li class="feature-card__item">
+              <i class="fas fa-heart"></i>
+              <span>Save favorites, track past orders, and receive curated tips.</span>
+            </li>
+            <li class="feature-card__item">
+              <i class="fas fa-bolt"></i>
+              <span>Fast checkout with smart cart memories across your devices.</span>
+            </li>
+          </ul>
+        </article>
+      </div>
+      <div class="col-lg-4">
+        <div class="glass-card auth-card h-100">
+          <div class="p-4 p-lg-5">
+            <h1 class="h3 fw-semibold mb-2">Welcome back</h1>
+            <p class="text-muted mb-4">Sign in to pick up where you left off.</p>
             <div class="alert alert-danger" role="alert" data-alert="login"></div>
             <form id="login-form" class="needs-validation" novalidate>
               <div class="mb-3">
@@ -34,10 +58,10 @@
                 <div class="invalid-feedback">Your password must be at least 8 characters.</div>
               </div>
               <div class="d-flex justify-content-between align-items-center mb-4">
-                <div class="form-check">
+                <label class="form-check">
                   <input class="form-check-input" type="checkbox" id="remember-me" />
-                  <label class="form-check-label" for="remember-me">Keep me signed in</label>
-                </div>
+                  <span class="form-check-label">Keep me signed in</span>
+                </label>
                 <a href="#" class="small text-decoration-none">Forgot password?</a>
               </div>
               <div class="d-grid gap-2">
@@ -47,11 +71,11 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-5">
-        <div class="card shadow-sm auth-card">
-          <div class="card-body p-4 p-md-5">
-            <h2 class="h4 fw-semibold mb-3">Create a GreenUP account</h2>
-            <p class="text-muted mb-4">Track orders, save favorites, and get personalized produce tips.</p>
+      <div class="col-lg-3">
+        <div class="glass-card auth-card h-100">
+          <div class="p-4 p-lg-5">
+            <h2 class="h4 fw-semibold mb-2">New to GreenUP?</h2>
+            <p class="text-muted mb-4">Create an account to unlock personalized picks.</p>
             <div class="alert alert-danger" role="alert" data-alert="signup"></div>
             <form id="signup-form" class="needs-validation" novalidate>
               <div class="mb-3">

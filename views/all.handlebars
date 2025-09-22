@@ -1,34 +1,31 @@
-﻿<section class="catalog py-5">
+<section class="catalog">
   <div class="container">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <div>
-        <h2 class="h3 fw-semibold mb-1">Shop fresh produce</h2>
-        <p class="text-muted mb-0">Browse seasonal favorites and pantry staples.</p>
-      </div>
+    <div class="section-heading text-center text-md-start">
+      <span class="section-heading__eyebrow">Seasonal market</span>
+      <h2 class="section-heading__title">Shop fresh produce</h2>
+      <p class="section-heading__lead">
+        Explore peak-season picks, pantry staples, and vibrant greens selected by our sourcing team.
+      </p>
     </div>
 
     {{#if products.length}}
-      <div class="row g-4">
+      <div class="product-grid">
         {{#each products}}
-          <div class="col-sm-6 col-lg-4">
-            <article class="card h-100 shadow-sm product-card">
-              <img
-                class="card-img-top"
-                src="{{imageURL}}"
-                alt="{{name}}"
-                loading="lazy"
-              />
-              <div class="card-body d-flex flex-column gap-2">
-                <h3 class="h5 card-title mb-0">
-                  <a class="stretched-link text-decoration-none text-dark" href="/products/{{id}}">
-                    {{name}}
-                  </a>
-                </h3>
-                <p class="text-muted small text-uppercase mb-1">{{category}}</p>
-                <p class="price-tag mb-3">${{price}}</p>
+          <article class="product-tile" tabindex="0">
+            <div class="product-tile__media">
+              <img src="{{imageURL}}" alt="{{name}}" loading="lazy" />
+            </div>
+            <div class="product-tile__body">
+              <span class="product-tile__category">{{category}}</span>
+              <h3 class="product-tile__title">
+                <a class="stretched-link" href="/products/{{id}}">{{name}}</a>
+              </h3>
+              <p class="text-muted small mb-2">{{description}}</p>
+              <div class="product-tile__actions">
+                <span class="product-tile__price">${{price}}</span>
                 <button
                   type="button"
-                  class="btn btn-success btn-sm mt-auto"
+                  class="btn btn-success btn-sm"
                   data-add-to-cart
                   data-product-id="{{id}}"
                   data-product-name="{{name}}"
@@ -38,12 +35,12 @@
                   Add to cart
                 </button>
               </div>
-            </article>
-          </div>
+            </div>
+          </article>
         {{/each}}
       </div>
     {{else}}
-      <div class="alert alert-info" role="status">
+      <div class="empty-state" role="status">
         We&apos;re restocking our catalog. Check back soon for fresh additions!
       </div>
     {{/if}}
