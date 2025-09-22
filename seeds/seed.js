@@ -1,4 +1,4 @@
-﻿const slugify = (value) =>
+const slugify = (value) =>
   value
     .toString()
     .trim()
@@ -6,7 +6,7 @@
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
-const sequelize = require('../config/connection');
+const { sequelize } = require('../config/connection');
 const { User, Product, Order, CartItem, Comment } = require('../models');
 const userData = require('./userData.json');
 const productData = require('./productData.json');
@@ -53,7 +53,7 @@ const commentSeeds = [
     userEmail: 'tim@email.com',
     productSlug: 'honeycrisp-apple',
     topic: 'Favorite Snack',
-    body: 'Sweet and crunchy—especially good when chilled!',
+    body: 'Sweet and crunchy�especially good when chilled!',
     status: 'visible',
   },
   {
@@ -131,7 +131,7 @@ const seedOrders = async () => {
   for (const seed of orderSeeds) {
     const user = userByEmail.get(seed.userEmail.toLowerCase());
     if (!user) {
-      log(`Skipping order ${seed.order_number} — user ${seed.userEmail} not found`);
+      log(`Skipping order ${seed.order_number} � user ${seed.userEmail} not found`);
       continue;
     }
 
@@ -189,7 +189,7 @@ const seedComments = async () => {
   for (const seed of commentSeeds) {
     const user = userByEmail.get(seed.userEmail.toLowerCase());
     if (!user) {
-      log(`Skipping comment — user ${seed.userEmail} not found`);
+      log(`Skipping comment � user ${seed.userEmail} not found`);
       continue;
     }
 
