@@ -1,0 +1,5 @@
+﻿node_modules
+public/pages
+views/**/*.handlebars
+.vscode
+seeds/*.json

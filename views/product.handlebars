@@ -1,20 +1,36 @@
-
-<main>
-
-<div class="bg-rose-600 rounded-xl text-center border-4 border-lime-800">
-  <div>
-    <h1 class="">{{product.id}} {{name}}</h1>
-    
-     <div class="mb-2"> 
-              <a href="javascript:void(0);" class="btn btn-success" onclick="addToCart('{{product.id}}', '{{name}}', '{{imageURL}}', {{price}})">Add to cart</a>
+﻿<section class="product-detail py-5">
+  <div class="container">
+    <div class="row gy-4 align-items-start">
+      <div class="col-lg-5">
+        <img
+          class="img-fluid rounded shadow-sm"
+          src="{{imageURL}}"
+          alt="{{name}}"
+          loading="lazy"
+        />
+      </div>
+      <div class="col-lg-7">
+        <h1 class="display-6 fw-semibold">{{name}}</h1>
+        <p class="text-muted text-uppercase letter-spacing">{{category}}</p>
+        <p class="lead fw-bold text-success mb-4">${{price}}</p>
+        {{#if description}}
+          <p class="text-muted mb-4">{{description}}</p>
+        {{/if}}
+        <div class="d-flex flex-wrap gap-3">
+          <button
+            type="button"
+            class="btn btn-success"
+            data-add-to-cart
+            data-product-id="{{id}}"
+            data-product-name="{{name}}"
+            data-product-image="{{imageURL}}"
+            data-product-price="{{price}}"
+          >
+            <i class="fas fa-shopping-basket me-2"></i>Add to cart
+          </button>
+          <a class="btn btn-outline-secondary" href="/products">Back to shop</a>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <img class=" w-40 h-40 self-center m-auto" src="{{imageURL}}" alt="{{category}}">
-  {{!-- <h2>Type: {{ category }}
-  </h2> --}}
-  <h3 class="w-full text-xl">Price: ${{price}}</h3>
-</div>
-<script src="/js/cart.js"></script>
-<script src="/js/cart.js"></script>
-
-</main>
+</section>

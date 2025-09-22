@@ -1,0 +1,12 @@
+﻿services:
+  - type: web
+    name: greenup
+    runtime: docker
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: RUN_MIGRATIONS
+        value: 'true'
+      - key: PORT
+        value: '3001'
