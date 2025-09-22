@@ -1,22 +1,26 @@
-﻿<section class="product-detail py-5">
+<section class="product-detail section-padding pt-0">
   <div class="container">
-    <div class="row gy-4 align-items-start">
-      <div class="col-lg-5">
-        <img
-          class="img-fluid rounded shadow-sm"
-          src="{{imageURL}}"
-          alt="{{name}}"
-          loading="lazy"
-        />
+    <div class="product-detail__wrapper">
+      <div class="product-detail__gallery">
+        <img src="{{imageURL}}" alt="{{name}}" loading="lazy" />
       </div>
-      <div class="col-lg-7">
-        <h1 class="display-6 fw-semibold">{{name}}</h1>
-        <p class="text-muted text-uppercase letter-spacing">{{category}}</p>
-        <p class="lead fw-bold text-success mb-4">${{price}}</p>
-        {{#if description}}
-          <p class="text-muted mb-4">{{description}}</p>
-        {{/if}}
-        <div class="d-flex flex-wrap gap-3">
+      <div class="product-detail__content">
+        <div>
+          <span class="product-detail__category">{{category}}</span>
+          <h1 class="section-heading__title mt-3 mb-2">{{name}}</h1>
+          {{#if description}}
+            <p class="text-muted mb-3">{{description}}</p>
+          {{/if}}
+        </div>
+        <div class="product-detail__meta">
+          <span class="product-detail__price">${{price}}</span>
+          {{#if nutritionFactsURL}}
+            <a class="btn btn-outline-success btn-sm" href="{{nutritionFactsURL}}" target="_blank" rel="noopener">
+              View nutrition facts
+            </a>
+          {{/if}}
+        </div>
+        <div class="product-detail__actions">
           <button
             type="button"
             class="btn btn-success"
@@ -28,7 +32,7 @@
           >
             <i class="fas fa-shopping-basket me-2"></i>Add to cart
           </button>
-          <a class="btn btn-outline-secondary" href="/products">Back to shop</a>
+          <a class="btn btn-outline-success" href="/products">Back to shop</a>
         </div>
       </div>
     </div>

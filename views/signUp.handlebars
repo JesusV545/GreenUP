@@ -1,61 +1,80 @@
-﻿<section class="vh-100 gradient-custom d-flex align-items-center">
-  <div class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card shadow-lg border-0">
-          <div class="card-body p-5">
-            <h1 class="h3 fw-semibold text-center mb-3 text-success">Create your account</h1>
-            <p class="text-muted text-center mb-4">
-              Join GreenUP for personalized recommendations and faster checkout.
-            </p>
-            <div class="alert alert-danger" role="alert" data-alert="standalone-signup"></div>
-            <form id="standalone-signup-form" data-standalone-signup novalidate>
-              <div class="mb-3">
-                <label class="form-label" for="ssu-name">Full name</label>
-                <input
-                  id="ssu-name"
-                  class="form-control"
-                  name="name"
-                  type="text"
-                  autocomplete="name"
-                  required
-                  minlength="2"
-                />
-                <div class="invalid-feedback">Please enter your name (2 characters minimum).</div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label" for="ssu-email">Email address</label>
-                <input
-                  id="ssu-email"
-                  class="form-control"
-                  name="email"
-                  type="email"
-                  autocomplete="email"
-                  required
-                />
-                <div class="invalid-feedback">We need a valid email to create your account.</div>
-              </div>
-              <div class="mb-4">
-                <label class="form-label" for="ssu-password">Password</label>
-                <input
-                  id="ssu-password"
-                  class="form-control"
-                  name="password"
-                  type="password"
-                  autocomplete="new-password"
-                  required
-                  minlength="8"
-                />
-                <div class="form-text">Use at least 8 characters including upper, lower, and a number.</div>
-                <div class="invalid-feedback">Please choose a stronger password.</div>
-              </div>
-              <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-success" data-submit>Sign up</button>
-                <a class="btn btn-outline-success" href="/">Back to sign in</a>
-              </div>
-            </form>
-          </div>
+<section class="section-padding pt-0">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6 order-lg-2">
+        <div class="glass-card h-100 p-4 p-lg-5">
+          <h1 class="h3 fw-semibold text-success mb-2">Create your account</h1>
+          <p class="text-muted mb-4">
+            Unlock tailored produce recommendations, faster checkout, and wellness guidance curated just for
+            you.
+          </p>
+          <div class="alert alert-danger" role="alert" data-alert="standalone-signup"></div>
+          <form id="standalone-signup-form" data-standalone-signup novalidate>
+            <div class="mb-3">
+              <label class="form-label" for="ssu-name">Full name</label>
+              <input
+                id="ssu-name"
+                class="form-control"
+                name="name"
+                type="text"
+                autocomplete="name"
+                required
+                minlength="2"
+              />
+              <div class="invalid-feedback">Please enter your name (2 characters minimum).</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="ssu-email">Email address</label>
+              <input
+                id="ssu-email"
+                class="form-control"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+              />
+              <div class="invalid-feedback">We need a valid email to create your account.</div>
+            </div>
+            <div class="mb-4">
+              <label class="form-label" for="ssu-password">Password</label>
+              <input
+                id="ssu-password"
+                class="form-control"
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                required
+                minlength="8"
+              />
+              <div class="form-text">Use at least 8 characters including upper, lower, and a number.</div>
+              <div class="invalid-feedback">Please choose a stronger password.</div>
+            </div>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-success" data-submit>Sign up</button>
+              <a class="btn btn-outline-success" href="/">Back to sign in</a>
+            </div>
+          </form>
         </div>
+      </div>
+      <div class="col-lg-6">
+        <article class="glass-card p-4 p-lg-5 h-100">
+          <span class="section-heading__eyebrow">Member perks</span>
+          <h2 class="h3 fw-semibold mb-3">Set wellness goals and let GreenUP help you reach them</h2>
+          <ul class="feature-card__list">
+            <li class="feature-card__item">
+              <i class="fas fa-calendar-week"></i>
+              <span>Flexible deliveries that adapt to your schedule and pantry.</span>
+            </li>
+            <li class="feature-card__item">
+              <i class="fas fa-gift"></i>
+              <span>Early access to limited releases and community tasting events.</span>
+            </li>
+            <li class="feature-card__item">
+              <i class="fas fa-chart-line"></i>
+              <span>Nutrition insights that turn good intentions into sustainable habits.</span>
+            </li>
+          </ul>
+        </article>
       </div>
     </div>
   </div>
