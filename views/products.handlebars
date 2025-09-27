@@ -1,41 +1,53 @@
-<section class="product-cards">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+{{!-- Legacy products view upgraded to the unified catalog styling --}}
+<section class="catalog section-padding pt-0">
+  <div class="container">
+    <div class="section-heading text-center text-md-start">
+      <span class="section-heading__eyebrow">Seasonal market</span>
+      <h2 class="section-heading__title">Shop fresh produce</h2>
+      <p class="section-heading__lead">
+        Explore peak-season picks, pantry staples, and vibrant greens selected by our sourcing team.
+      </p>
+    </div>
 
-<div class="container">
-<div class="col-xs-12 col-md-6 shadow p-3 mb-5 bg-white rounded bootstrap snippets bootdeys">
-	
-	<!-- product -->
-    {{#each product as |product|}}
-	<div class="product-content product-wrap clearfix">
-		<div class="row">
-				<div class="col-md-5 col-sm-12 col-xs-12">
-					<div class="product-image"> 
-						<img src={{product_imageURL}} alt="194x228" class="img-responsive"> 
-					</div>
-				</div>
-				<div class="col-md-7 col-sm-12 col-xs-12">
-				<div class="product-deatil">
-						<h5 class="name">
-							<a href="#">
-                               <p>{{product_name}}</p>
-								<span>{{product_category}}</span>
-							</a>
-						</h5>
-						<p class="price-container">
-							<span>{{product_price}}</span>
-						</p>
-						<span class="tag1"></span> 
-				</div>
-				
-				<div class="product-info smart-form">
-					<div class="row">
-						<div class="col-md-6 col-sm-6 col-xs-6"> 
-							<a href="javascript:void(0);" class="btn btn-success">Add to cart</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script src="/js/cart.js"></script>
-	<!-- end product -->
+    {{#if product.length}}
+      <div class="product-grid">
+        {{#each product}}
+          <article class="product-tile surface-card surface-card--hover" tabindex="0">
+            <div class="product-tile__media">
+              <img
+                src="{{#if imageURL}}{{imageURL}}{{else}}{{product_imageURL}}{{/if}}"
+                alt="{{#if name}}{{name}}{{else}}{{product_name}}{{/if}}"
+                loading="lazy"
+              />
+            </div>
+            <div class="product-tile__body">
+              <span class="product-tile__category">{{#if category}}{{category}}{{else}}{{product_category}}{{/if}}</span>
+              <h3 class="product-tile__title">
+                <span>{{#if name}}{{name}}{{else}}{{product_name}}{{/if}}</span>
+              </h3>
+              <div class="product-tile__actions">
+                <span class="product-tile__price">${{#if price}}{{price}}{{else}}{{product_price}}{{/if}}</span>
+                <button
+                  type="button"
+                  class="btn btn-success btn-sm"
+                  data-add-to-cart
+                  data-product-id="{{#if id}}{{id}}{{else}}{{product_id}}{{/if}}"
+                  data-product-name="{{#if name}}{{name}}{{else}}{{product_name}}{{/if}}"
+                  data-product-image="{{#if imageURL}}{{imageURL}}{{else}}{{product_imageURL}}{{/if}}"
+                  data-product-price="{{#if price}}{{price}}{{else}}{{product_price}}{{/if}}"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </article>
+        {{/each}}
+      </div>
+    {{else}}
+      <div class="empty-state" role="status">
+        We&apos;re restocking our catalog. Check back soon for fresh additions!
+      </div>
+    {{/if}}
+  </div>
+</section>
+<script defer src="/js/cart.js"></script>

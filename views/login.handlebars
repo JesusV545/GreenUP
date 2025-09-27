@@ -1,127 +1,114 @@
 <section class="auth-section section-padding pt-0">
   <div class="container">
-    <div class="row g-4 g-xl-5 align-items-stretch">
-      <div class="col-lg-5">
-        <article class="glass-card feature-card h-100">
-          <span class="section-heading__eyebrow">Why members love us</span>
-          <h2 class="h3 fw-semibold mb-2">Personalized wellness in every delivery</h2>
-          <p class="text-muted mb-4">
-            Tailored recommendations, seasonal rotating selections, and a seamless checkout keep your
-            kitchen stocked with vibrant staples.
-          </p>
-          <ul class="feature-card__list">
-            <li class="feature-card__item">
-              <i class="fas fa-seedling"></i>
-              <span>Discover peak-season produce sourced from trusted growers.</span>
-            </li>
-            <li class="feature-card__item">
-              <i class="fas fa-heart"></i>
-              <span>Save favorites, track past orders, and receive curated tips.</span>
-            </li>
-            <li class="feature-card__item">
-              <i class="fas fa-bolt"></i>
-              <span>Fast checkout with smart cart memories across your devices.</span>
-            </li>
-          </ul>
+    <div class="auth-gate glass-card">
+      <div class="auth-gate__intro">
+        <span class="auth-gate__eyebrow">GreenUP community</span>
+        <h1 class="auth-gate__title">Welcome back</h1>
+        <p class="auth-gate__lead">
+          Sign in to pick up where you left off or create an account to tailor your next harvest.
+        </p>
+        <ul class="auth-gate__list">
+          <li><i class="fas fa-basket-shopping"></i> Curated produce delivered within 48 hours of harvest.</li>
+          <li><i class="fas fa-star"></i> Save favorite items and get personalized suggestions.</li>
+          <li><i class="fas fa-seedling"></i> Support 150+ regenerative farm partners with every order.</li>
+        </ul>
+      </div>
+      <div class="auth-gate__forms">
+        <article class="auth-panel auth-panel--login">
+          <header class="auth-panel__header">
+            <h2 class="auth-panel__title">Welcome back</h2>
+            <p class="auth-panel__subtitle">Sign in to pick up where you left off.</p>
+          </header>
+          <div class="alert alert-danger auth-panel__alert" role="alert" data-alert="login"></div>
+          <form id="login-form" class="needs-validation auth-panel__form" novalidate>
+            <div>
+              <label class="form-label" for="login-email">Email address</label>
+              <input
+                id="login-email"
+                type="email"
+                class="form-control"
+                name="email"
+                autocomplete="email"
+                required
+              />
+              <div class="invalid-feedback">Please enter the email you registered with.</div>
+            </div>
+            <div>
+              <label class="form-label" for="login-password">Password</label>
+              <input
+                id="login-password"
+                type="password"
+                class="form-control"
+                name="password"
+                autocomplete="current-password"
+                required
+                minlength="8"
+              />
+              <div class="invalid-feedback">Your password must be at least 8 characters.</div>
+            </div>
+            <div class="auth-panel__footer">
+              <label class="form-check">
+                <input class="form-check-input" type="checkbox" id="remember-me" />
+                <span class="form-check-label">Keep me signed in</span>
+              </label>
+              <a href="#" class="small text-decoration-none">Forgot password?</a>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-success">Sign in</button>
+            </div>
+          </form>
         </article>
-      </div>
-      <div class="col-lg-4">
-        <div class="glass-card auth-card h-100">
-          <div class="p-4 p-lg-5">
-            <h1 class="h3 fw-semibold mb-2">Welcome back</h1>
-            <p class="text-muted mb-4">Sign in to pick up where you left off.</p>
-            <div class="alert alert-danger" role="alert" data-alert="login"></div>
-            <form id="login-form" class="needs-validation" novalidate>
-              <div class="mb-3">
-                <label class="form-label" for="login-email">Email address</label>
-                <input
-                  id="login-email"
-                  type="email"
-                  class="form-control"
-                  name="email"
-                  autocomplete="email"
-                  required
-                />
-                <div class="invalid-feedback">Please enter the email you registered with.</div>
-              </div>
-              <div class="mb-4">
-                <label class="form-label" for="login-password">Password</label>
-                <input
-                  id="login-password"
-                  type="password"
-                  class="form-control"
-                  name="password"
-                  autocomplete="current-password"
-                  required
-                  minlength="8"
-                />
-                <div class="invalid-feedback">Your password must be at least 8 characters.</div>
-              </div>
-              <div class="d-flex justify-content-between align-items-center mb-4">
-                <label class="form-check">
-                  <input class="form-check-input" type="checkbox" id="remember-me" />
-                  <span class="form-check-label">Keep me signed in</span>
-                </label>
-                <a href="#" class="small text-decoration-none">Forgot password?</a>
-              </div>
-              <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-success">Sign in</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="glass-card auth-card h-100">
-          <div class="p-4 p-lg-5">
-            <h2 class="h4 fw-semibold mb-2">New to GreenUP?</h2>
-            <p class="text-muted mb-4">Create an account to unlock personalized picks.</p>
-            <div class="alert alert-danger" role="alert" data-alert="signup"></div>
-            <form id="signup-form" class="needs-validation" novalidate>
-              <div class="mb-3">
-                <label class="form-label" for="signup-name">Name</label>
-                <input
-                  id="signup-name"
-                  type="text"
-                  class="form-control"
-                  name="name"
-                  autocomplete="name"
-                  required
-                />
-                <div class="invalid-feedback">Let us know what to call you.</div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label" for="signup-email">Email address</label>
-                <input
-                  id="signup-email"
-                  type="email"
-                  class="form-control"
-                  name="email"
-                  autocomplete="email"
-                  required
-                />
-                <div class="invalid-feedback">Please provide a valid email.</div>
-              </div>
-              <div class="mb-4">
-                <label class="form-label" for="signup-password">Password</label>
-                <input
-                  id="signup-password"
-                  type="password"
-                  class="form-control"
-                  name="password"
-                  autocomplete="new-password"
-                  minlength="8"
-                  required
-                />
-                <div class="form-text">Use 8+ characters with upper, lower, and a number.</div>
-                <div class="invalid-feedback">Choose a stronger password.</div>
-              </div>
-              <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-outline-success">Sign up</button>
-              </div>
-            </form>
-          </div>
-        </div>
+
+        <article class="auth-panel auth-panel--signup">
+          <header class="auth-panel__header">
+            <h2 class="auth-panel__title">New to GreenUP?</h2>
+            <p class="auth-panel__subtitle">Create an account to unlock personalized picks.</p>
+          </header>
+          <div class="alert alert-danger auth-panel__alert" role="alert" data-alert="signup"></div>
+          <form id="signup-form" class="needs-validation auth-panel__form" novalidate>
+            <div>
+              <label class="form-label" for="signup-name">Name</label>
+              <input
+                id="signup-name"
+                type="text"
+                class="form-control"
+                name="name"
+                autocomplete="name"
+                required
+              />
+              <div class="invalid-feedback">Let us know what to call you.</div>
+            </div>
+            <div>
+              <label class="form-label" for="signup-email">Email address</label>
+              <input
+                id="signup-email"
+                type="email"
+                class="form-control"
+                name="email"
+                autocomplete="email"
+                required
+              />
+              <div class="invalid-feedback">Please provide a valid email.</div>
+            </div>
+            <div>
+              <label class="form-label" for="signup-password">Password</label>
+              <input
+                id="signup-password"
+                type="password"
+                class="form-control"
+                name="password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              />
+              <div class="form-text">Use 8+ characters with upper, lower, and a number.</div>
+              <div class="invalid-feedback">Choose a stronger password.</div>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-outline-success">Sign up</button>
+            </div>
+          </form>
+        </article>
       </div>
     </div>
   </div>
