@@ -1,40 +1,72 @@
-<!-- Create Account -->
-<main class=" flex h-screen bg-slate-800 justify-center items-center">
-  <div class="bg-slate-200 text-start rounded-xl h-1/2 w-1/2">
-    <div class="bg-slate-400 text-4xl text-sky-900 rounded-xl h-auto"> <h1 class="ml-4 underline">Create Your Account</h1></div>
-    <form class="grid grid-cols-2 grid-rows-4" id="creating-form">
-      <div class="mt-2 ml-4 mr-4">
-        <label for="user-login" class="text-rose-900 text-2xl font-bold">Enter UserName: </label>
-        <input type="text" class="bg-slate-800 bold h-8 focus:bg-white rounded-xl w-full text-2xl font-bold" id="user-login">
-      </div>
-      <div class="mt-2 ml-4 mr-4">
-        <label for="user-login" class="text-rose-900 text-2xl font-bold">Check UserName: </label>
-        <input type="text" class="bg-slate-800 bold h-8 focus:bg-white rounded-xl w-full text-2xl font-bold" id="user-login">
-      </div>
-      <div class="ml-4 mt-2 mr-4">
-        <label for="email-login" class="text-rose-800 font-bold text-2xl">email:</label> <br>
-        <input class="bg-slate-800 w-full h-8 focus:bg-white rounded-xl text-2xl font-bold" type="text" id="email-creation" />
-      </div>
-      <div class="ml-4 mt-2 mr-4">
-        <label for="email-login" class="text-rose-800 font-bold text-2xl"> Check email:</label> <br>
-        <input class="bg-slate-800 w-full h-8 focus:bg-white rounded-xl text-2xl font-bold" type="text" id="email-creation" />
-      </div>
-      <div class="ml-4 mt-2 mr-4">
-        <label for="password-login" class="text-rose-700 font-bold text-2xl">password:</label> <br>
-        <input class="bg-slate-800 w-full h-8 focus:bg-white rounded-xl text-2xl font-bold" type="password" id="password-creation" /><br>
-      </div>
-      <div class="ml-4 mt-2 mr-4">
-        <label for="password-login" class="text-rose-700 font-bold text-2xl">Check password:</label> <br>
-        <input class="bg-slate-800 w-full h-8 focus:bg-white rounded-xl text-2xl font-bold" type="password" id="password-creation" /><br>
-      </div>
-        <button class="bg-rose-900 focus:bg-lime-900 rounded-xl w-4/12 mt-4 text-2xl ml-4" type="submit" id="signUp">Sign Up</button>
-        <div class=" mt-4 ml-4">
-          <p>Already have an Account?</p>
-          <button class="bg-sky-900 focus:bg-lime-900 rounded-xl w-4/12 mt-4 text-2xl ml-4" type="submit" id="login">Login</button>
-        </div>
-        
-      
-    </form>
+<section class="section-padding pt-0">
+  <div class="container">
+    <div class="signup-gate">
+      <section class="signup-gate__form">
+        <header class="signup-gate__header">
+          <span class="section-heading__eyebrow">Create account</span>
+          <h1 class="signup-gate__title">Set up your GreenUP profile</h1>
+          <p class="signup-gate__lead">
+            Unlock tailored recommendations, seamless checkout, and wellness guidance curated just for you.
+          </p>
+        </header>
+        <div class="alert alert-danger" role="alert" data-alert="standalone-signup"></div>
+        <form id="standalone-signup-form" class="needs-validation" data-standalone-signup novalidate>
+          <div>
+            <label class="form-label" for="ssu-name">Full name</label>
+            <input
+              id="ssu-name"
+              class="form-control"
+              name="name"
+              type="text"
+              autocomplete="name"
+              required
+              minlength="2"
+            />
+            <div class="invalid-feedback">Please enter your name (2 characters minimum).</div>
+          </div>
+          <div>
+            <label class="form-label" for="ssu-email">Email address</label>
+            <input
+              id="ssu-email"
+              class="form-control"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+            />
+            <div class="invalid-feedback">We need a valid email to create your account.</div>
+          </div>
+          <div>
+            <label class="form-label" for="ssu-password">Password</label>
+            <input
+              id="ssu-password"
+              class="form-control"
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              required
+              minlength="8"
+            />
+            <div class="form-text">Use at least 8 characters including upper, lower, and a number.</div>
+            <div class="invalid-feedback">Please choose a stronger password.</div>
+          </div>
+          <div class="signup-gate__actions">
+            <button type="submit" class="btn btn-success" data-submit>Create account</button>
+            <a class="btn btn-outline-success" href="/">Back to sign in</a>
+          </div>
+        </form>
+      </section>
+
+      <aside class="signup-gate__perks">
+        <span class="signup-gate__perks-eyebrow">Member perks</span>
+        <h2 class="h4 fw-semibold">Set wellness goals and let GreenUP help you reach them</h2>
+        <ul class="signup-gate__list">
+          <li><i class="fas fa-clock"></i> Flexible deliveries that adapt to your schedule and pantry.</li>
+          <li><i class="fas fa-gift"></i> Early access to limited releases and community tasting events.</li>
+          <li><i class="fas fa-heartbeat"></i> Nutrition insights that turn good intentions into sustainable habits.</li>
+        </ul>
+      </aside>
+    </div>
   </div>
-</main>
-<script src="/js/profile.js"></script>
+</section>
+<script defer src="/js/profile.js"></script>

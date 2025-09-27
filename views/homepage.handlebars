@@ -1,63 +1,59 @@
- 
- <main class="bg-slate-400 h-screen grid grid-rows-3 grid-cols-4 ">
-    <div class="bg-slate-800 col-span-2 text-center text-4xl md:text-5xl lg:text-6xl">
-      <h1 class="ml-8 mr-8"> Welcome <br><span class="text-3xl hover:text-rose-900 underline hover:text-4xl">"user name goes here"</span> , <br> to GreenUp</h1>
-     
-    </div>
-     <img class="col-span-2 h-fit w-full h-full" src="../img/allVeggies.jpg" alt="allVeggies">
-     <div class="bg-black text-center">
-      <h1 class="text-rose-900 text-4xl underline">What is GreenUp? </h1>
-      <p class="text-white text-l">
-        orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus laoreet libero ac tempor sodales. In hac habitasse platea dictumst. Morbi elementum metus sit amet massa sollicitudin accumsan. Sed non dui nibh. Fusce viverra arcu faucibus pretium imperdiet. Suspendisse tincidunt metus sit amet metus tincidunt ullamcorper.
-      </p>
-     </div>
-     <img class=" h-fit w-full h-full" src="../img/deliveryGreens.jpeg" alt="allVeggies">
-     <div class="bg-rose-900 ">
-      <h1 class="text-2xl text-center underline">
-        How Can GreenUp help with your Diet?
-      </h1><p class="text-white text-l">
-        Fusce ullamcorper ante in blandit mollis. Nunc vitae imperdiet felis. Mauris porta nibh eros, ut eleifend lectus pulvinar ut. Vivamus eleifend pharetra quam, id consectetur ante rutrum vel.
-      </p></div>
-     <img class=" h-fit w-full h-full" src="../img/dietGreen.webp" alt="allVeggies">
+{{!-- Homepage secondary sections build on the hero messaging --}}
+<section class="homepage-intro section-padding pt-0">
+  <div class="section-heading text-center">
+    <span class="section-heading__eyebrow">Why GreenUP</span>
+    <h2 class="section-heading__title">Fuel your plate with purposeful produce</h2>
+    <p class="section-heading__lead">
+      We harvest to order, partner with regenerative farms, and deliver guidance that keeps healthy choices
+      simple.
+    </p>
+  </div>
+  <div class="feature-grid">
+    <article class="feature-grid__card glass-card glass-card--hover">
+      <span class="feature-grid__icon"><i class="fas fa-leaf"></i></span>
+      <h3 class="feature-grid__title">Sustainably sourced</h3>
+      <p class="feature-grid__copy">Trace every ingredient back to growers committed to regenerative farming.</p>
+    </article>
+    <article class="feature-grid__card glass-card glass-card--hover">
+      <span class="feature-grid__icon"><i class="fas fa-seedling"></i></span>
+      <h3 class="feature-grid__title">Seasonal variety</h3>
+      <p class="feature-grid__copy">Enjoy rotating picks harvested at peak flavor with chef-inspired pairings.</p>
+    </article>
+    <article class="feature-grid__card glass-card glass-card--hover">
+      <span class="feature-grid__icon"><i class="fas fa-truck"></i></span>
+      <h3 class="feature-grid__title">Flexible delivery</h3>
+      <p class="feature-grid__copy">Skip, reschedule, or double up boxes anytime directly from your dashboard.</p>
+    </article>
+    <article class="feature-grid__card glass-card glass-card--hover">
+      <span class="feature-grid__icon"><i class="fas fa-heartbeat"></i></span>
+      <h3 class="feature-grid__title">Wellness insights</h3>
+      <p class="feature-grid__copy">Get quick nutrition tips and recipes aligned with your personal goals.</p>
+    </article>
+  </div>
+</section>
 
-     <!-- Creating the sign in or create account -->
-     <div class="bg-slate-700 col-span-2 border-r-4  border-y-4 border-lime-600">
-      <div class="bg-rose-900 text-2xl text-center bold">
-        <h1>Login Here</h1>
-      </div>
-      <form class="" id="login-form">
-      <div class="ml-4 mt-4">
-        <label for="email-login" class="text-sky-500 text-4xl">email:</label> 
-        <input class="bg-slate-800 w-1/2 h-8 focus:bg-white rounded-xl" type="text" id="email-login" />
-      </div>
-      <div class="ml-4 mt-4">
-        <label for="password-login" class="text-sky-500 text-4xl">password:</label>
-        <input class="bg-slate-800 w-1/2 h-8 focus:bg-white rounded-xl" type="password" id="password-login" />
-      </div>
-        <button class="bg-rose-900 focus:bg-lime-900 rounded-xl w-4/12 mt-4 text-2xl ml-4" type="submit" id="loginbutton">login</button>
-      
-    </form>
-     </div>
-     <!-- Sign up selection Here -->
-     <div class="bg-slate-700 col-span-2 border-y-4 border-lime-600">
-      <div class="bg-rose-900 text-2xl text-center bold">
-        <h1>Create your account Here</h1>
-      </div>
-      <form class="" id="creating-form">
-      <div class="ml-4 mt-4">
-        <label for="email-login" class="text-sky-500 text-2xl">email:</label> 
-        <input class="bg-slate-800 w-1/2 h-8 focus:bg-white rounded-xl" type="text" id="email-creation" /><br>
-        <label for="email-login" class="text-sky-500 text-2xl">Re-type email:</label> 
-        <input class="bg-slate-800 w-1/2 h-8 focus:bg-white rounded-xl" type="text" id="email-check" />
-      </div>
-      <div class="ml-4 mt-4">
-        <label for="password-login" class="text-sky-500 text-2xl">password:</label>
-        <input class="bg-slate-800 w-1/2 h-8 focus:bg-white rounded-xl" type="password" id="password-creation" /><br>
-        <label for="password-login" class="text-sky-500 text-2xl">Re-type password:</label>
-        <input class="bg-slate-800 w-1/2 h-8 focus:bg-white rounded-xl" type="password" id="password-check" />
-      </div>
-        <button class="bg-rose-900 focus:bg-lime-900 rounded-xl w-4/12 mt-4 text-2xl ml-4" type="submit">login</button>
-      
-    </form>
-     </div>
-  </main>
+<div class="section-divider" aria-hidden="true"></div>
+
+{{!-- Guided journey from planning to delivery --}}
+<section class="home-panels">
+  <article class="surface-card home-panel home-panel--primary">
+    <h2 class="h4 fw-semibold mb-2">Plan your basket in minutes</h2>
+    <p class="text-muted mb-3">Set your preferences once and we'll keep your kitchen stocked year-round.</p>
+    <ul class="home-panel__list">
+      <li><i class="fas fa-check-circle"></i> Blend seasonal produce with pantry staples that suit your diet.</li>
+      <li><i class="fas fa-check-circle"></i> Save your go-to items and we'll hold them for future deliveries.</li>
+      <li><i class="fas fa-check-circle"></i> Receive reminders before each shipment so you can adjust items.</li>
+    </ul>
+    <div class="d-flex flex-wrap gap-2 mt-3">
+      <a class="btn btn-success" href="/products">Browse produce</a>
+      <a class="btn btn-outline-success" href="/">Create your plan</a>
+    </div>
+  </article>
+  <article class="glass-card glass-card--center home-panel">
+    <h3 class="h5 fw-semibold mb-2">Freshness guarantee</h3>
+    <p class="text-muted mb-3">Every box is packed within 48 hours of harvest and arrives chilled.</p>
+    <div class="home-panel__pill">Climate-smart deliveries</div>
+    <div class="home-panel__pill home-panel__pill--accent">Compostable packaging</div>
+    <a class="btn btn-outline-success mt-3" href="/about-us">See sourcing standards</a>
+  </article>
+</section>

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GreenUP</title>
+    <title>GreenUP Market</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,115 +21,147 @@
   </head>
   <body>
     <header class="site-header">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg glass-nav">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="/">GreenUP Market</a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#primaryNav"
-              aria-controls="primaryNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="primaryNav">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="/signup">Create Account</a></li>
-                <li class="nav-item"><a class="nav-link" href="/products">Shop</a></li>
-                <li class="nav-item"><a class="nav-link" href="/about-us">About</a></li>
-              </ul>
-              <div class="d-flex flex-column flex-lg-row gap-3 align-items-lg-center w-100 w-lg-auto">
-                <form class="d-flex ms-lg-4" role="search">
-                  <label class="visually-hidden" for="nav-search">Find a product</label>
-                  <input
-                    id="nav-search"
-                    type="search"
-                    class="form-control form-control-sm"
-                    placeholder="Search produce"
-                  />
-                </form>
-                <a class="btn btn-success btn-sm" href="/products">Browse catalog</a>
-                <a class="btn btn-outline-success btn-sm" href="/cart" aria-label="View cart">
-                  <i class="fas fa-shopping-basket"></i>
-                </a>
-              </div>
+      {{!-- Primary navigation with integrated search and calls-to-action --}}
+      <nav class="navbar navbar-expand-lg glass-nav">
+        <div class="layout-boundary navbar__inner">
+          <a class="navbar-brand" href="/">GreenUP Market</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#primaryNav"
+            aria-controls="primaryNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="primaryNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a class="nav-link" href="/">Login / Sign Up</a></li>
+              <li class="nav-item"><a class="nav-link" href="/products">Shop</a></li>
+              <li class="nav-item"><a class="nav-link" href="/about-us">About</a></li>
+            </ul>
+            <div class="navbar__actions">
+              <form class="navbar__search" role="search">
+                <label class="visually-hidden" for="nav-search">Find a product</label>
+                <input
+                  id="nav-search"
+                  type="search"
+                  class="form-control form-control-sm"
+                  placeholder="Search produce"
+                />
+              </form>
+              <a class="btn btn-success btn-sm" href="/products">Browse catalog</a>
+              <a class="btn btn-outline-success btn-sm" href="/cart" aria-label="View cart">
+                <i class="fas fa-shopping-basket"></i>
+              </a>
             </div>
           </div>
-        </nav>
-      </div>
-      <section class="hero mt-4 mt-lg-5">
-        <div class="container">
-          <div class="hero__inner">
-            <span class="hero__eyebrow">Farm-to-table goodness</span>
-            <h1 class="hero__title">Nourish your routine with consciously sourced produce.</h1>
-            <p class="hero__lead">
-              GreenUP connects you to a curated marketplace of flavorful fruits, vibrant vegetables, and
-              wellness staples delivered with care.
-            </p>
-            <div class="hero__actions">
-              <a class="btn btn-success" href="/products">Shop seasonal picks</a>
-              <a class="btn btn-outline-success" href="/about-us">Learn about GreenUP</a>
-            </div>
+        </div>
+      </nav>
+
+      {{!-- Hero banner anchors the brand promise --}}
+      <section class="hero">
+        <div class="hero__inner">
+          <span class="hero__eyebrow">Farm-to-table goodness</span>
+          <h1 class="hero__title">Nourish your routine with consciously sourced produce.</h1>
+          <p class="hero__lead">
+            GreenUP connects you to a curated marketplace of flavorful fruits, vibrant vegetables, and
+            wellness staples delivered with care.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn-success" href="/products">Shop seasonal picks</a>
+            <a class="btn btn-outline-success" href="/about-us">Learn about GreenUP</a>
+          </div>
+          <div class="hero__stats stat-grid" aria-label="GreenUP highlights">
+            <article class="stat-card glass-card glass-card--center">
+              <p class="stat-card__value">48 hrs</p>
+              <p class="stat-card__label">from harvest to doorstep</p>
+            </article>
+            <article class="stat-card glass-card glass-card--center">
+              <p class="stat-card__value">150+</p>
+              <p class="stat-card__label">regional farm partners</p>
+            </article>
+            <article class="stat-card glass-card glass-card--center">
+              <p class="stat-card__value">4.9 / 5</p>
+              <p class="stat-card__label">member satisfaction score</p>
+            </article>
           </div>
         </div>
       </section>
     </header>
 
-    <main class="section-padding">
-      {{{ body }}}
+    <main class="site-main section-padding">
+      <div class="layout-boundary layout-boundary--narrow">
+        {{{ body }}}
+      </div>
     </main>
 
-    <footer class="site-footer py-5">
-      <div class="container">
-        <div class="row gy-4 align-items-start">
-          <div class="col-lg-5">
-            <h2 class="h4 fw-semibold mb-3">Join the GreenUP community</h2>
-            <p class="mb-4">
-              Seasonal recipes, cooking tips, and mindful wellness delivered straight to your inbox.
-            </p>
-            <form class="row g-2" novalidate>
-              <div class="col-sm-7">
-                <label class="visually-hidden" for="footer-email">Email address</label>
+    {{!-- Footer keeps forms and links consistent with the refreshed system --}}
+    <footer class="site-footer">
+      <div class="layout-boundary footer-shell">
+        <div class="footer-shell__grid">
+          <section class="footer-panel footer-panel--signup">
+            <header class="footer-panel__header">
+              <span class="footer-panel__eyebrow">Join the community</span>
+              <h2 class="footer-panel__title">Fresh ideas, delivered weekly</h2>
+              <p class="footer-panel__lead">
+                Seasonal recipes, sourcing stories, and wellness prompts arrive right to your inbox.
+              </p>
+            </header>
+            <form class="footer-signup" novalidate>
+              <label class="visually-hidden" for="footer-email">Email address</label>
+              <div class="footer-signup__field">
                 <input
                   id="footer-email"
                   type="email"
-                  class="form-control form-control-sm"
+                  class="form-control"
                   placeholder="you@example.com"
+                  autocomplete="email"
                 />
+                <button type="submit" class="btn btn-success">Subscribe</button>
               </div>
-              <div class="col-sm-5 d-grid">
-                <button type="submit" class="btn btn-success btn-sm">Subscribe</button>
-              </div>
+              <p class="footer-signup__disclaimer">We respect your inbox. Unsubscribe anytime.</p>
             </form>
-          </div>
-          <div class="col-lg-3">
-            <h3 class="h6 text-uppercase fw-semibold mb-3">Explore</h3>
-            <ul class="list-unstyled d-grid gap-2">
+          </section>
+
+          <section class="footer-panel footer-panel--links">
+            <h3 class="footer-panel__section">Explore</h3>
+            <ul class="footer-links">
               <li><a href="/products">Seasonal catalog</a></li>
               <li><a href="/about-us">Our mission</a></li>
-              <li><a href="/signup">Create account</a></li>
+              <li><a href="/">Login / Sign Up</a></li>
               <li><a href="/cart">View cart</a></li>
             </ul>
-          </div>
-          <div class="col-lg-4">
-            <h3 class="h6 text-uppercase fw-semibold mb-3">Stay connected</h3>
-            <p class="mb-3">Follow us for market arrivals and community events.</p>
-            <div class="d-flex gap-3">
-              <a href="https://facebook.com" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="https://twitter.com" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-              <a href="https://instagram.com" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="https://linkedin.com" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-              <a href="https://github.com/JesusV545/GreenUP" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </section>
+
+          <section class="footer-panel footer-panel--social">
+            <h3 class="footer-panel__section">Stay connected</h3>
+            <p class="footer-panel__lead">Follow along for new arrivals and community events.</p>
+            <div class="footer-social">
+              <a href="https://facebook.com" aria-label="Facebook" class="footer-social__link">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://twitter.com" aria-label="Twitter" class="footer-social__link">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://instagram.com" aria-label="Instagram" class="footer-social__link">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://linkedin.com" aria-label="LinkedIn" class="footer-social__link">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="https://github.com/JesusV545/GreenUP" aria-label="GitHub" class="footer-social__link">
+                <i class="fab fa-github"></i>
+              </a>
             </div>
-          </div>
+          </section>
         </div>
-        <hr class="border-light opacity-25 my-4" />
-        <p class="text-center mb-0">&copy; <span id="footer-year"></span> GreenUP. All rights reserved.</p>
+
+        <div class="footer-shell__meta">
+          <p class="footer-shell__legal">&copy; <span id="footer-year"></span> GreenUP. All rights reserved.</p>
+        </div>
       </div>
     </footer>
 
